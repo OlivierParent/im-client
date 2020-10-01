@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "react-scripts build",
+    "build": "react-scripts build && mv build docs || move build docs",
     "start": "react-scripts start"
   },
   "author": "Olivier Parent",
@@ -30,5 +30,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "/im-client"
 }
