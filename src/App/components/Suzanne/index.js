@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useFrame } from "react-three-fiber";
-import { useGLTFLoader } from "drei";
+import { useGLTFLoader } from "@react-three/drei";
 
 import suzanne from "./suzanne.glb";
 

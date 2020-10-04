@@ -10,12 +10,15 @@
   "author": "Olivier Parent",
   "license": "ISC",
   "dependencies": {
-    "drei": "^1.5.7",
+    "@react-three/cannon": "^0.5.3",
+    "@react-three/drei": "^2.0.0",
+    "@react-three/flex": "^0.5.2",
+    "@react-three/postprocessing": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
     "react-spring": "^8.0.27",
-    "react-three-fiber": "^5.0.2",
+    "react-three-fiber": "^5.0.3",
     "socket.io-client": "^2.3.1",
     "three": "^0.121.1"
   },

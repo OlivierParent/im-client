@@ -9,20 +9,22 @@ export default (props) => {
   const xAxis = useRef();
   const yAxis = useRef();
   const zAxis = useRef();
+
   useEffect(() => {
     xAxis.current.position.x = length / 2;
     yAxis.current.position.y = length / 2;
     zAxis.current.position.z = length / 2;
   });
+
   return (
-    <mesh {...props}>
+    <group {...props}>
       <mesh>
         <boxBufferGeometry
           args={[thickness * 1.5, thickness * 1.5, thickness * 1.5]}
           attach="geometry"
         />
       </mesh>
-      <mesh ref={xAxis}>
+      <group ref={xAxis}>
         <mesh position={[thickness * 2, 0, 0]}>
           <boxBufferGeometry
             args={[length, thickness, thickness]}
@@ -40,8 +42,8 @@ export default (props) => {
           />
           <meshStandardMaterial attach="material" color="#F00" />
         </mesh>
-      </mesh>
-      <mesh ref={yAxis}>
+      </group>
+      <group ref={yAxis}>
         <mesh position={[0, thickness * 2, 0]}>
           <boxBufferGeometry
             args={[thickness, length, thickness]}
@@ -59,8 +61,8 @@ export default (props) => {
           />
           <meshStandardMaterial attach="material" color="#0F0" />
         </mesh>
-      </mesh>
-      <mesh ref={zAxis}>
+      </group>
+      <group ref={zAxis}>
         <mesh position={[0, 0, thickness * 2]}>
           <boxBufferGeometry
             args={[thickness, thickness, length]}
@@ -78,7 +80,7 @@ export default (props) => {
           />
           <meshStandardMaterial attach="material" color="#00F" />
         </mesh>
-      </mesh>
-    </mesh>
+      </group>
+    </group>
   );
 };

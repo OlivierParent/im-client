@@ -1,0 +1,27 @@
+import React, { useState } from "react";
+import { useFrame } from "react-three-fiber";
+import { Text } from "@react-three/drei";
+
+export default (props) => {
+  const [hover, setHover] = useState(false);
+  const [color, setColor] = useState(0x00ff00);
+
+  useFrame(() => {});
+
+  return (
+    <group
+      onPointerOver={() => setHover(true)}
+      onPointerOut={() => setHover(false)}
+      onClick={() => setColor(0xff0000)}
+      onDoubleClick={() => setColor(0x0000ff)}
+    >
+      <mesh>
+        <boxBufferGeometry args={hover ? [1, 0.5, 0.01] : [1, 0.5, 0.01]} />
+        <meshMatcapMaterial color={color} />
+      </mesh>
+      <Text color="white" fontSize={0.2} position={[0, 0, 0.01]}>
+        Click Me!
+      </Text>
+    </group>
+  );
+};

@@ -1,100 +1,101 @@
+// @todo Rotate gauge based on range, in stead of compensating rotation in calculation.
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
-
-import { Convert } from "../../utils";
+import { Convert } from "App/utils";
 
 export default (props) => {
-  const tickMarks = [
-    { color: "green", label: "0" },
-    { color: "white", label: "10" },
-    { color: "white", label: "20" },
-    { color: "white", label: "30" },
-    { color: "white", label: "40" },
-    { color: "orange", label: "50" },
-    { color: "red", label: "60" },
-    { color: "red", label: "70" },
+  const TICK_MARKS = [
+    { color: "green", label: "0", ref: useRef(), value: 0 },
+    { color: "white", label: "10", ref: useRef(), value: 1000 },
+    { color: "white", label: "20", ref: useRef(), value: 2000 },
+    { color: "white", label: "30", ref: useRef(), value: 3000 },
+    { color: "white", label: "40", ref: useRef(), value: 4000 },
+    { color: "orange", label: "50", ref: useRef(), value: 5000 },
+    { color: "red", label: "60", ref: useRef(), value: 6000 },
+    { color: "red", label: "70", ref: useRef(), value: 7000 },
   ];
-  const angleRange = 270;
-  const angleStep = angleRange / (tickMarks.length - 1);
-  const startAngle = -(360 - angleRange) * 1.5;
+  const ANGLE_RANGE = 270;
+  const NEEDLE_STEP_DOWN = -250;
+  const NEEDLE_STEP_UP = 60;
+
+  const angleStep = ANGLE_RANGE / (TICK_MARKS.length - 1);
+  const angleStart = Convert.toRadians(-(90 + (360 - ANGLE_RANGE) / 2));
+  const valueRange = (TICK_MARKS.length - 1) * 1000;
+  const valueStep = ANGLE_RANGE / valueRange;
   const needleRef = useRef();
-  const needleStepUp = 40;
-  const needleStepDown = -200;
-  let needleStep = needleStepUp;
-  let needleValue = 0;
   let needleAngle = 0;
+  let needleValue = 0;
+  let needleStep = NEEDLE_STEP_UP;
 
   useFrame(() => {
     if (needleValue <= 0) {
-      needleStep = needleStepUp;
-    } else if (1000 * (tickMarks.length - 1) <= needleValue) {
-      needleStep = needleStepDown;
+      needleStep = NEEDLE_STEP_UP;
+    } else if (valueRange <= needleValue) {
+      needleStep = NEEDLE_STEP_DOWN;
     }
     needleValue += needleStep;
-
-    needleAngle = Convert.toRadians(
-      startAngle - (angleRange / (1000 * (tickMarks.length - 1))) * needleValue
-    );
+    needleAngle = Convert.toRadians(-(valueStep * needleValue));
     needleRef.current.rotation.z = needleAngle;
+
+    TICK_MARKS.forEach((tickMark, index) => {
+      tickMark.ref.current.children[0].material.color.setColorName(
+        tickMark.value <= needleValue ? "blue" : tickMark.color
+      );
+    });
   });
 
   return (
-    <mesh {...props}>
-      {tickMarks.map((value, index) => {
-        const radians = Convert.toRadians(startAngle - angleStep * index);
+    <group {...props} rotation={[0, 0, angleStart]}>
+      {TICK_MARKS.map((tickMark, index) => {
+        const radians = Convert.toRadians(-angleStep * index);
         return (
-          <mesh rotation={[0, 0, radians]}>
+          <group ref={tickMark.ref} key={index} rotation={[0, 0, radians]}>
             <mesh position={[1, 0, 0]}>
               <boxBufferGeometry attach="geometry" args={[0.25, 0.05, 0.05]} />
               <meshStandardMaterial
                 attach="material"
-                color={value.color}
+                color={tickMark.color}
                 metalness={0.1}
                 opacity={0.5}
                 roughness={0.6}
                 transparent={true}
               />
             </mesh>
-          </mesh>
+          </group>
         );
       })}
-
-      <mesh position={[0, 0, 0.1]}>
-        <mesh ref={needleRef}>
-          <mesh position={[0.5, 0, 0]}>
-            <boxBufferGeometry args={[1, 0.05, 0.05]} attach="geometry" />
+      <group position={[0, 0, 0.05]}>
+        <group ref={needleRef}>
+          <mesh castShadow={true} position={[0.5, 0, 0]}>
+            <boxBufferGeometry args={[1, 0.05, 0.025]} attach="geometry" />
             <meshStandardMaterial
               attach="material"
-              // color={color}
               metalness={0.1}
-              opacity={1}
               roughness={0.6}
-              transparent={true}
+              color="orange"
             />
           </mesh>
+        </group>
+        <mesh castShadow={true} rotation={[Convert.toRadians(-90), 0, 0]}>
+          <cylinderBufferGeometry
+            args={[0.1, 0.05, 0.1, 32]}
+            attach="geometry"
+          />
+          <meshStandardMaterial attach="material" />
         </mesh>
-        <mesh>
-          <mesh rotation={[Convert.toRadians(90), 0, 0]}>
-            <cylinderBufferGeometry
-              args={[0.1, 0.1, 0.05, 32]}
-              attach="geometry"
-            />
-            <meshStandardMaterial
-              attach="material"
-              opacity={1}
-              transparent={true}
-            />
-          </mesh>
-        </mesh>
-      </mesh>
-      <mesh position={[0, 0, -0.1]} rotation={[Convert.toRadians(90), 0, 0]}>
-        <cylinderBufferGeometry args={[1.2, 1.2, 0.05, 64]} attach="geometry" />
+      </group>
+      <mesh
+        position={[0, 0, -0.05]}
+        receiveShadow={true}
+        rotation={[Convert.toRadians(90), 0, 0]}
+      >
+        <cylinderBufferGeometry args={[1.2, 1.2, 0.01, 64]} attach="geometry" />
         <meshStandardMaterial
           attach="material"
           opacity={0.25}
           transparent={true}
         />
       </mesh>
-    </mesh>
+    </group>
   );
 };
