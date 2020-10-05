@@ -10,10 +10,10 @@ export default (props) => {
 
   return (
     <group
-      onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}
       onClick={() => setColor(0xff0000)}
       onDoubleClick={() => setColor(0x0000ff)}
+      onPointerOut={() => setHover(false)}
+      onPointerOver={() => setHover(true)}
     >
       <mesh>
         <boxBufferGeometry args={hover ? [1, 0.5, 0.01] : [1, 0.5, 0.01]} />

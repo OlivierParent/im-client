@@ -51,9 +51,8 @@ export default (props) => {
         return (
           <group ref={tickMark.ref} key={index} rotation={[0, 0, radians]}>
             <mesh position={[1, 0, 0]}>
-              <boxBufferGeometry attach="geometry" args={[0.25, 0.05, 0.05]} />
+              <boxBufferGeometry args={[0.25, 0.05, 0.05]} />
               <meshStandardMaterial
-                attach="material"
                 color={tickMark.color}
                 metalness={0.1}
                 opacity={0.5}
@@ -67,9 +66,8 @@ export default (props) => {
       <group position={[0, 0, 0.05]}>
         <group ref={needleRef}>
           <mesh castShadow={true} position={[0.5, 0, 0]}>
-            <boxBufferGeometry args={[1, 0.05, 0.025]} attach="geometry" />
+            <boxBufferGeometry args={[1, 0.05, 0.025]} />
             <meshStandardMaterial
-              attach="material"
               metalness={0.1}
               roughness={0.6}
               color="orange"
@@ -77,11 +75,8 @@ export default (props) => {
           </mesh>
         </group>
         <mesh castShadow={true} rotation={[Convert.toRadians(-90), 0, 0]}>
-          <cylinderBufferGeometry
-            args={[0.1, 0.05, 0.1, 32]}
-            attach="geometry"
-          />
-          <meshStandardMaterial attach="material" />
+          <cylinderBufferGeometry args={[0.1, 0.05, 0.1, 32]} />
+          <meshStandardMaterial />
         </mesh>
       </group>
       <mesh
@@ -89,12 +84,8 @@ export default (props) => {
         receiveShadow={true}
         rotation={[Convert.toRadians(90), 0, 0]}
       >
-        <cylinderBufferGeometry args={[1.2, 1.2, 0.01, 64]} attach="geometry" />
-        <meshStandardMaterial
-          attach="material"
-          opacity={0.25}
-          transparent={true}
-        />
+        <cylinderBufferGeometry args={[1.2, 1.2, 0.01, 64]} />
+        <meshStandardMaterial opacity={0.25} transparent={true} />
       </mesh>
     </group>
   );

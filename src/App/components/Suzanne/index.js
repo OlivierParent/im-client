@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useFrame } from "react-three-fiber";
-import { useGLTFLoader } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 
 import suzanne from "./suzanne.glb";
 
 export default () => {
   const [clockwise, setClockwise] = useState(false);
-  const { nodes, materials } = useGLTFLoader(suzanne, true);
+  const { nodes, materials } = useGLTF(suzanne, true);
   const suzanneRef = useRef();
   const speed = 0.025;
 
@@ -21,10 +21,10 @@ export default () => {
 
   return (
     <mesh
-      ref={suzanneRef}
-      material={materials["Paars"]}
       geometry={nodes.Suzanne.geometry}
+      material={materials["Paars"]}
       onClick={() => setClockwise(!clockwise)}
+      ref={suzanneRef}
     />
   );
 };

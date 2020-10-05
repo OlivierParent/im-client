@@ -1,86 +1,48 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 export default (props) => {
   const length = 1;
-  const thickness = 0.01;
-  const radius = thickness * 2;
-  const height = thickness * 4;
-  const segments = 8;
-  const xAxis = useRef();
-  const yAxis = useRef();
-  const zAxis = useRef();
-
-  useEffect(() => {
-    xAxis.current.position.x = length / 2;
-    yAxis.current.position.y = length / 2;
-    zAxis.current.position.z = length / 2;
-  });
+  const radius = (length / 100) * 2;
+  const segments = 32;
+  const thickness = length / 100;
 
   return (
     <group {...props}>
       <mesh>
         <boxBufferGeometry
-          args={[thickness * 1.5, thickness * 1.5, thickness * 1.5]}
-          attach="geometry"
+          args={[1, 1, 1].map((value) => value * 1.5 * thickness)}
         />
+        <meshMatcapMaterial color={0xffffff} />
       </mesh>
-      <group ref={xAxis}>
-        <mesh position={[thickness * 2, 0, 0]}>
-          <boxBufferGeometry
-            args={[length, thickness, thickness]}
-            attach="geometry"
-          />
-          <meshStandardMaterial attach="material" color="#F00" />
-        </mesh>
-        <mesh
-          position={[length / 2 + thickness * 2, 0, 0]}
-          rotation={[0, 0, -Math.PI / 2]}
-        >
-          <coneBufferGeometry
-            args={[radius, height, segments]}
-            attach="geometry"
-          />
-          <meshStandardMaterial attach="material" color="#F00" />
-        </mesh>
-      </group>
-      <group ref={yAxis}>
-        <mesh position={[0, thickness * 2, 0]}>
-          <boxBufferGeometry
-            args={[thickness, length, thickness]}
-            attach="geometry"
-          />
-          <meshStandardMaterial attach="material" color="#0F0" />
-        </mesh>
-        <mesh
-          position={[0, length / 2 + thickness * 2, 0]}
-          rotation={[0, -Math.PI / 2, 0]}
-        >
-          <coneBufferGeometry
-            args={[radius, height, segments]}
-            attach="geometry"
-          />
-          <meshStandardMaterial attach="material" color="#0F0" />
-        </mesh>
-      </group>
-      <group ref={zAxis}>
-        <mesh position={[0, 0, thickness * 2]}>
-          <boxBufferGeometry
-            args={[thickness, thickness, length]}
-            attach="geometry"
-          />
-          <meshStandardMaterial attach="material" color="#00F" />
-        </mesh>
-        <mesh
-          position={[0, 0, length / 2 + thickness * 2]}
-          rotation={[Math.PI / 2, 0, 0]}
-        >
-          <coneBufferGeometry
-            args={[radius, height, segments]}
-            attach="geometry"
-          />
-          <meshStandardMaterial attach="material" color="#00F" />
-        </mesh>
-      </group>
+
+      {Array(3)
+        .fill(null)
+        .map((value, index) => {
+          return (
+            <group
+              position={[0, 0, 0].map((v, i) =>
+                index === i ? length / 2 + thickness * 2 : v
+              )}
+            >
+              <mesh>
+                <boxBufferGeometry
+                  args={[1, 1, 1].map(
+                    (v, i) => v * (index === i ? length : thickness)
+                  )}
+                />
+                <meshMatcapMaterial color={0xff0000 >> (8 * index)} />
+              </mesh>
+              <mesh
+                position={[0, 0, 0].map((v, i) =>
+                  index === i ? length / 2 + thickness * 3 : v
+                )}
+              >
+                <sphereBufferGeometry args={[radius, segments, segments]} />
+                <meshMatcapMaterial color={0xffffff} />
+              </mesh>
+            </group>
+          );
+        })}
     </group>
   );
 };

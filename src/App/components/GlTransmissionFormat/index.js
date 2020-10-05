@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import { useFrame } from "react-three-fiber";
-import { useGLTFLoader } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 
 import logo from "./glTF.glb";
 
 export default () => {
   const [clockwise, setClockwise] = useState(false);
 
-  const gltf = useGLTFLoader(logo, true);
+  const gltf = useGLTF(logo, true);
   const logoRef = useRef();
   const speed = 0.025;
 

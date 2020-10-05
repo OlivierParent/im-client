@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 import { Text } from "@react-three/drei";
-import { Convert } from "App/utils";
+import { Circle, Convert } from "App/utils";
 
 export default (props) => {
   const HH = 12;
@@ -18,7 +18,7 @@ export default (props) => {
   useFrame(() => {
     const d = new Date();
 
-    CLOCK.current.rotation.y += 0.01;
+    // CLOCK.current.rotation.y += 0.01;
 
     HAND_SS.current.rotation.z = Convert.toRadians(
       d.getSeconds() * -(360 / SS)
@@ -38,35 +38,40 @@ export default (props) => {
         <Text color="black" position={[0, -0.25, 0.01]}>
           Arteveldehogeschool
         </Text>
+        {Array(HH)
+          .fill(null)
+          .map((value, index) => {
+            const c = new Circle(0.75);
+            const angle = index * (360 / HH) + 90;
+            const { x, y } = c.getCoordinates(angle);
+            return (
+              <Text color="black" position={[x, y, 0.01]}>
+                {(12 - index).toString()}
+              </Text>
+            );
+          })}
       </group>
       <group {...props} rotation={[0, 0, angleStart]}>
         <mesh receiveShadow={true} rotation={[Convert.toRadians(90), 0, 0]}>
-          <cylinderBufferGeometry
-            args={[1.2, 1.2, 0.01, 64]}
-            attach="geometry"
-          />
-          <meshStandardMaterial
-            attach="material"
-            opacity={0.25}
-            transparent={true}
-          />
+          <cylinderBufferGeometry args={[1.2, 1.2, 0.01, 64]} />
+          <meshStandardMaterial opacity={0.25} transparent={true} />
         </mesh>
         <group ref={HAND_HH}>
           <mesh castShadow={true} position={[0.3, 0, 0]}>
-            <boxBufferGeometry args={[0.6, 0.06, 0.06]} attach="geometry" />
-            <meshStandardMaterial attach="material" />
+            <boxBufferGeometry args={[0.6, 0.06, 0.06]} />
+            <meshStandardMaterial />
           </mesh>
         </group>
         <group ref={HAND_MM}>
           <mesh castShadow={true} position={[0.4, 0, 0]}>
-            <boxBufferGeometry args={[0.8, 0.04, 0.04]} attach="geometry" />
-            <meshStandardMaterial attach="material" />
+            <boxBufferGeometry args={[0.8, 0.04, 0.04]} />
+            <meshStandardMaterial />
           </mesh>
         </group>
         <group ref={HAND_SS}>
           <mesh castShadow={true} position={[0.5, 0, 0]}>
-            <boxBufferGeometry args={[1, 0.02, 0.02]} attach="geometry" />
-            <meshStandardMaterial attach="material" color={0xcccc00} />
+            <boxBufferGeometry args={[1, 0.02, 0.02]} />
+            <meshStandardMaterial color={0xcccc00} />
           </mesh>
         </group>
         {Array(MM)
@@ -77,7 +82,6 @@ export default (props) => {
               <group key={index} rotation={[0, 0, radians]}>
                 <mesh position={[1, 0, 0]}>
                   <boxBufferGeometry
-                    attach="geometry"
                     args={[
                       index % 5 ? 0.15 : 0.25,
                       index % 5 ? 0.01 : 0.03,
@@ -85,7 +89,6 @@ export default (props) => {
                     ]}
                   />
                   <meshStandardMaterial
-                    attach="material"
                     color={
                       index === 0 ? 0x0000ff : index % 5 ? 0xffffff : 0xff0000
                     }
@@ -99,11 +102,8 @@ export default (props) => {
             );
           })}
         <mesh castShadow={true} rotation={[Convert.toRadians(-90), 0, 0]}>
-          <cylinderBufferGeometry
-            args={[0.1, 0.05, 0.1, 32]}
-            attach="geometry"
-          />
-          <meshStandardMaterial attach="material" />
+          <cylinderBufferGeometry args={[0.1, 0.05, 0.1, 32]} />
+          <meshStandardMaterial />
         </mesh>
       </group>
     </group>

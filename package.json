@@ -4,16 +4,17 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "react-scripts build && mv build docs || move build docs",
+    "remove-docs": "rmdir /s /q docs || rm -r -f docs",
+    "build": "react-scripts build && move build docs || mv build docs",
     "start": "react-scripts start"
   },
   "author": "Olivier Parent",
   "license": "ISC",
   "dependencies": {
     "@react-three/cannon": "^0.5.3",
-    "@react-three/drei": "^2.0.0",
+    "@react-three/drei": "^2.1.0",
     "@react-three/flex": "^0.5.2",
-    "@react-three/postprocessing": "^1.4.0",
+    "@react-three/postprocessing": "^1.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",

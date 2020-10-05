@@ -10,13 +10,13 @@ export default () => {
       <group position={pos}>
         <directionalLight
           castShadow={true}
-          // color={0xff0000}
+          color={0xffffff}
           intensity={1}
           ref={lightRef}
         />
         <mesh position={pos}>
-          <sphereBufferGeometry args={[0.01, 32, 32]} attach="geometry" />
-          <meshMatcapMaterial attach="material" />
+          <sphereBufferGeometry args={[0.01, 32, 32]} />
+          <meshMatcapMaterial />
         </mesh>
       </group>
 

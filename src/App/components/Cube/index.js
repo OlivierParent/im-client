@@ -16,13 +16,12 @@ export default (props) => {
 
   return (
     <mesh {...props}>
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+      <boxBufferGeometry args={[1, 1, 1]} />
       <meshStandardMaterial
-        ref={cubeRef}
-        attach="material"
         color={color}
         metalness={0.1}
         opacity={0.5}
+        ref={cubeRef}
         roughness={0.6}
         transparent={true}
       />

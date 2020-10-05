@@ -38,19 +38,20 @@ export default () => {
         {true && (
           <OrbitControls
             enablePan={true}
-            enableZoom={true}
             enableRotate={true}
+            enableZoom={true}
           />
         )}
         {false && <Stats />}
-        {false && <gridHelper args={[10, 10, "red", "gray"]} />}
+        {false && <axesHelper />}
+        {false && <gridHelper args={[10, 10, "red", "green"]} />}
       </group>
       <EffectComposer>
         <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
       </EffectComposer>
       <Lighting />
-      {true && <Button />}
-      {false && <Clock />}
+      {false && <Button />}
+      {true && <Clock />}
       {false && <Cube />}
       {false && <Cube position={[1, 1, 1]} rotation={[0.5, 0.5, 0.5]} />}
       {false && <Gauge position={[0, 0, -1]} />}
