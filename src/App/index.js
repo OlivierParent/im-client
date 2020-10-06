@@ -51,14 +51,14 @@ export default () => {
       </EffectComposer>
       <Lighting />
       {false && <Button />}
-      {true && <Clock />}
+      {false && <Clock />}
       {false && <Cube />}
       {false && <Cube position={[1, 1, 1]} rotation={[0.5, 0.5, 0.5]} />}
       {false && <Gauge position={[0, 0, -1]} />}
-      {false && (
+      {true && (
         <Suspense fallback={null}>
-          <Suzanne />
-          <GlTransmissionFormat />
+          {true && <Suzanne />}
+          {true && <GlTransmissionFormat />}
         </Suspense>
       )}
       {false && <Tripod />}

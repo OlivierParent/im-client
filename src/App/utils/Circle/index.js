@@ -1,4 +1,3 @@
-import { useTessellation } from "@react-three/drei";
 import { Convert } from "App/utils";
 
 export default class {
