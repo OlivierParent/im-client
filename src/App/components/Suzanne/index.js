@@ -10,8 +10,8 @@ export default () => {
   const suzanneRef = useRef();
   const speed = 0.025;
 
-  console.log("nodes:", nodes);
-  console.log("materials:", materials);
+  // console.log("nodes:", nodes);
+  // console.log("materials:", materials);
 
   useFrame(() => {
     suzanneRef.current.rotation.x += speed * (clockwise ? 1 : -1);

@@ -10,6 +10,7 @@ import {
   Gauge,
   GlTransmissionFormat,
   Lighting,
+  StudioLighting,
   Suzanne,
   Tripod,
 } from "App/components";
@@ -49,7 +50,8 @@ export default () => {
       <EffectComposer>
         <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
       </EffectComposer>
-      <Lighting />
+      {false && <Lighting />}
+      {true && <StudioLighting />}
       {false && <Button />}
       {false && <Clock />}
       {false && <Cube />}
