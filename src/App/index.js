@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "react-three-fiber";
+import { Controls, ControlsProvider } from "react-three-gui";
 import { OrbitControls, Stats } from "@react-three/drei";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 // import io from "socket.io-client";
@@ -11,7 +12,10 @@ import {
   GlTransmissionFormat,
   Lighting,
   StudioLighting,
+  StudioLightingGuiControls,
   Suzanne,
+  SuzanneMatcap,
+  SuzanneStandard,
   Tripod,
 } from "App/components";
 
@@ -34,36 +38,48 @@ export default () => {
   // });
 
   return (
-    <Canvas invalidateFrameloop={false} shadowMap>
-      <group>
-        {true && (
-          <OrbitControls
-            enablePan={true}
-            enableRotate={true}
-            enableZoom={true}
-          />
+    <ControlsProvider>
+      <Canvas invalidateFrameloop={false} shadowMap>
+        <group>
+          {true && (
+            <OrbitControls
+              enablePan={true}
+              enableRotate={true}
+              enableZoom={true}
+            />
+          )}
+          {true && <Stats />}
+          {true && <axesHelper />}
+          {true && <gridHelper />}
+        </group>
+        {false && (
+          <EffectComposer>
+            <Bloom
+              height={500}
+              luminanceThreshold={0}
+              luminanceSmoothing={0.9}
+            />
+          </EffectComposer>
         )}
-        {false && <Stats />}
-        {false && <axesHelper />}
-        {false && <gridHelper args={[10, 10, "red", "green"]} />}
-      </group>
-      <EffectComposer>
-        <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-      </EffectComposer>
-      {false && <Lighting />}
-      {true && <StudioLighting />}
-      {false && <Button />}
-      {false && <Clock />}
-      {false && <Cube />}
-      {false && <Cube position={[1, 1, 1]} rotation={[0.5, 0.5, 0.5]} />}
-      {false && <Gauge position={[0, 0, -1]} />}
-      {true && (
-        <Suspense fallback={null}>
-          {true && <Suzanne />}
-          {true && <GlTransmissionFormat />}
-        </Suspense>
-      )}
-      {false && <Tripod />}
-    </Canvas>
+        {false && <Lighting />}
+        {false && <StudioLighting />}
+        {true && <StudioLightingGuiControls />}
+        {false && <Button />}
+        {false && <Clock />}
+        {/* {true && <Cube />}
+        {false && <Cube position={[1, 1, 1]} rotation={[0.5, 0.5, 0.5]} />} */}
+        {false && <Gauge />}
+        {true && (
+          <Suspense fallback={null}>
+            {false && <GlTransmissionFormat />}
+            {false && <Suzanne />}
+            {false && <SuzanneMatcap />}
+            {true && <SuzanneStandard />}
+          </Suspense>
+        )}
+        {false && <Tripod />}
+      </Canvas>
+      <Controls title="Controls" />
+    </ControlsProvider>
   );
 };

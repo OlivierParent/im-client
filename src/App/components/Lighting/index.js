@@ -1,26 +1,35 @@
-import React, { useRef } from "react";
+import React from "react";
+import { useResource } from "react-three-fiber";
 
 export default () => {
-  const lightRef = useRef();
-  const pos = [0.5, 0.5, 1];
+  const directionalLightRef = useResource();
+  const pointLightRef = useResource();
+  const showHelpers = true;
 
   return (
     <>
       <ambientLight intensity={0.1} />
-      <group position={pos}>
-        <directionalLight
-          castShadow={true}
-          color={0xffffff}
-          intensity={1}
-          ref={lightRef}
-        />
-        <mesh position={pos}>
-          <sphereBufferGeometry args={[0.01, 32, 32]} />
-          <meshMatcapMaterial />
-        </mesh>
-      </group>
-
-      <pointLight color={0xff6600} intensity={0.5} position={[0, 0, 0]} />
+      <directionalLight
+        castShadow={true}
+        color={0xffffff}
+        intensity={1}
+        position={[0.5, 0.5, 1]}
+        ref={directionalLightRef}
+      >
+        {showHelpers && directionalLightRef.current && (
+          <directionalLightHelper args={[directionalLightRef.current, 0.5]} />
+        )}
+      </directionalLight>
+      <pointLight
+        color={0xff6600}
+        intensity={0.5}
+        position={[0, 0, 1]}
+        ref={pointLightRef}
+      >
+        {showHelpers && pointLightRef.current && (
+          <pointLightHelper args={[pointLightRef.current, 0.5]} />
+        )}
+      </pointLight>
     </>
   );
 };
