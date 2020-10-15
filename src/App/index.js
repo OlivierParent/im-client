@@ -6,13 +6,14 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 // import io from "socket.io-client";
 import {
   Button,
+  ButtonSpring,
   Clock,
   Cube,
   Gauge,
   GlTransmissionFormat,
   Lighting,
-  StudioLighting,
-  StudioLightingGuiControls,
+  LightingStudio,
+  LightingStudioGui,
   Suzanne,
   SuzanneMatcap,
   SuzanneStandard,
@@ -62,14 +63,15 @@ export default () => {
           </EffectComposer>
         )}
         {false && <Lighting />}
-        {false && <StudioLighting />}
-        {true && <StudioLightingGuiControls />}
+        {false && <LightingStudio />}
+        {false && <LightingStudioGui />}
         {false && <Button />}
+        {true && <ButtonSpring />}
         {false && <Clock />}
-        {/* {true && <Cube />}
-        {false && <Cube position={[1, 1, 1]} rotation={[0.5, 0.5, 0.5]} />} */}
+        {false && <Cube />}
+        {false && <Cube position={[1, 1, 1]} rotation={[0.5, 0.5, 0.5]} />}
         {false && <Gauge />}
-        {true && (
+        {false && (
           <Suspense fallback={null}>
             {false && <GlTransmissionFormat />}
             {false && <Suzanne />}

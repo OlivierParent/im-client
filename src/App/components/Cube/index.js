@@ -1,35 +1,36 @@
-// import React, { useRef, useState } from "react";
-// import { useFrame } from "react-three-fiber";
-// import { a, useSpring } from "react-spring";
-// import { createPortal } from "react-dom";
+import React, { useRef, useState } from "react";
+import { animated, useSpring } from "react-spring/three";
 
-// export default (props) => {
-//   const colors = ["#f00", "#ff0", "#0f0", "#0ff", "#00f", "#f0f"];
-//   const color = colors[Math.floor(Math.random() * colors.length)];
-//   const cubeRef = useRef();
+export default (props) => {
+  const colors = ["#f00", "#ff0", "#0f0", "#0ff", "#00f", "#f0f"];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  const cubeRef = useRef();
+  const [toggle, setToggle] = useState(true);
+  const { opacity } = useSpring({
+    opacity: toggle ? 0.9 : 0.5,
+  });
+  const { position } = useSpring({
+    position: toggle ? [0, 0, 0] : getPosition(),
+  });
+  console.log(position);
 
-//   // let delta = 0.01;
-//   // useFrame(() => {
-//   //   if (cubeRef.current.opacity <= 0 || 1 <= cubeRef.current.opacity) {
-//   //     delta = -delta;
-//   //   }
-//   //   cubeRef.current.opacity += delta;
-//   // });
-//   const [toggle, setToggle] = useState(true);
+  function getPosition() {
+    return [(Math.random() * 2 - 1) * 4, (Math.random() * 2 - 1) * 4, 0];
+  }
 
-//   const opacity = useSpring({ opacity: toggle ? 1 : 0.5 });
-
-//   return (
-//     <a.mesh {...props}>
-//       <boxBufferGeometry args={[1, 1, 1]} />
-//       <meshStandardMaterial
-//         color={color}
-//         metalness={0.1}
-//         opacity={opacity}
-//         ref={cubeRef}
-//         roughness={0.6}
-//         transparent={true}
-//       />
-//     </a.mesh>
-//   );
-// };
+  return (
+    <animated.mesh
+      {...props}
+      onClick={() => setToggle(!toggle)}
+      position={position}
+    >
+      <boxBufferGeometry args={[1, 1, 1]} />
+      <animated.meshMatcapMaterial
+        color={color}
+        opacity={opacity}
+        ref={cubeRef}
+        transparent={true}
+      />
+    </animated.mesh>
+  );
+};
