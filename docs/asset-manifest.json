@@ -5,19 +5,19 @@
     "main.js.map": "/im-client/static/js/main.1fb0795b.chunk.js.map",
     "runtime-main.js": "/im-client/static/js/runtime-main.75549f0a.js",
     "runtime-main.js.map": "/im-client/static/js/runtime-main.75549f0a.js.map",
-    "static/js/2.a0e37624.chunk.js": "/im-client/static/js/2.a0e37624.chunk.js",
-    "static/js/2.a0e37624.chunk.js.map": "/im-client/static/js/2.a0e37624.chunk.js.map",
+    "static/js/2.5dbad064.chunk.js": "/im-client/static/js/2.5dbad064.chunk.js",
+    "static/js/2.5dbad064.chunk.js.map": "/im-client/static/js/2.5dbad064.chunk.js.map",
     "index.html": "/im-client/index.html",
-    "precache-manifest.3ecf33feb65e1742922538a0ff607786.js": "/im-client/precache-manifest.3ecf33feb65e1742922538a0ff607786.js",
+    "precache-manifest.c33b7bb5cdb7a57a53faa37f52ca8331.js": "/im-client/precache-manifest.c33b7bb5cdb7a57a53faa37f52ca8331.js",
     "service-worker.js": "/im-client/service-worker.js",
     "static/css/main.d866904c.chunk.css.map": "/im-client/static/css/main.d866904c.chunk.css.map",
-    "static/js/2.a0e37624.chunk.js.LICENSE.txt": "/im-client/static/js/2.a0e37624.chunk.js.LICENSE.txt",
+    "static/js/2.5dbad064.chunk.js.LICENSE.txt": "/im-client/static/js/2.5dbad064.chunk.js.LICENSE.txt",
     "static/media/glTF.glb": "/im-client/static/media/glTF.ce019e05.glb",
     "static/media/suzanne.glb": "/im-client/static/media/suzanne.fdd60495.glb"
   },
   "entrypoints": [
     "static/js/runtime-main.75549f0a.js",
-    "static/js/2.a0e37624.chunk.js",
+    "static/js/2.5dbad064.chunk.js",
     "static/css/main.d866904c.chunk.css",
     "static/js/main.1fb0795b.chunk.js"
   ]

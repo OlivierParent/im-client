@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@react-three/cannon": "^0.5.3",
-    "@react-three/drei": "^2.1.0",
+    "@react-three/drei": "^2.1.1-beta.3",
     "@react-three/flex": "^0.5.2",
     "@react-three/postprocessing": "^1.4.1",
     "react": "^16.14.0",
