@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useFrame } from "react-three-fiber";
-import { useGLTF, useSubdivision } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 
 import suzanne from "./suzanne.glb";
 
@@ -9,7 +9,6 @@ export default () => {
   const [rotate, setRotate] = useState(false);
   const { nodes, materials } = useGLTF(suzanne, true);
   const objectRef = useRef();
-  const suzanneRef = useSubdivision(2);
   const speed = 0.025;
 
   useFrame(() => {
@@ -27,11 +26,7 @@ export default () => {
       onClick={() => setClockwise(!clockwise)}
       onDoubleClick={() => setRotate(!rotate)}
     >
-      <mesh
-        geometry={nodes.Suzanne.geometry}
-        material={materials["Paars"]}
-        ref={suzanneRef}
-      />
+      <mesh geometry={nodes.Suzanne.geometry} material={materials["Paars"]} />
     </group>
   );
 };

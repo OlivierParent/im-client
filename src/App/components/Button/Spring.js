@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as THREE from "three";
 import { useFrame } from "react-three-fiber";
 import { animated, useSpring } from "react-spring/three";
-import { Box, Text } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 
 export default (props) => {
   const [hover, setHover] = useState(false);
@@ -18,6 +18,7 @@ export default (props) => {
 
   return (
     <animated.group
+      {...props}
       onClick={() => setToggle(!toggle)}
       onDoubleClick={() => setColorCurrent(colorCurrent >> 8)}
       onPointerOut={() => setHover(false)}

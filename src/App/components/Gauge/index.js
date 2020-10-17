@@ -74,7 +74,7 @@ export default (props) => {
       <group position={[0, 0, 0.05]}>
         <group ref={needleRef}>
           <group rotation={[0, 0, THREE.MathUtils.degToRad(-90)]}>
-            <Cone args={[0.03, 1, 4]} position={[0, 0.5, 0]}>
+            <Cone args={[0.03, 1, 4]} castShadow={true} position={[0, 0.5, 0]}>
               <meshStandardMaterial
                 color="orange"
                 metalness={0.1}
