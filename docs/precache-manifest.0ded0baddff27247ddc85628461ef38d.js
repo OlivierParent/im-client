@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f235ef6d6ad8114093be02efe9d828a5",
+    "revision": "edbafcc62defef9d8f4171d70d8ee7e0",
     "url": "/x-reality/index.html"
   },
   {
