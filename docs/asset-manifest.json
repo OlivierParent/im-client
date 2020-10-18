@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/im-client/static/css/main.d866904c.chunk.css",
-    "main.js": "/im-client/static/js/main.64fd87b0.chunk.js",
-    "main.js.map": "/im-client/static/js/main.64fd87b0.chunk.js.map",
-    "runtime-main.js": "/im-client/static/js/runtime-main.75549f0a.js",
-    "runtime-main.js.map": "/im-client/static/js/runtime-main.75549f0a.js.map",
-    "static/js/2.044caf84.chunk.js": "/im-client/static/js/2.044caf84.chunk.js",
-    "static/js/2.044caf84.chunk.js.map": "/im-client/static/js/2.044caf84.chunk.js.map",
-    "index.html": "/im-client/index.html",
-    "precache-manifest.66c8c70c76e9acd791a4a4031bf486b1.js": "/im-client/precache-manifest.66c8c70c76e9acd791a4a4031bf486b1.js",
-    "service-worker.js": "/im-client/service-worker.js",
-    "static/css/main.d866904c.chunk.css.map": "/im-client/static/css/main.d866904c.chunk.css.map",
-    "static/js/2.044caf84.chunk.js.LICENSE.txt": "/im-client/static/js/2.044caf84.chunk.js.LICENSE.txt",
-    "static/media/glTF.glb": "/im-client/static/media/glTF.ce019e05.glb",
-    "static/media/suzanne.glb": "/im-client/static/media/suzanne.fdd60495.glb"
+    "main.css": "/x-reality/static/css/main.d866904c.chunk.css",
+    "main.js": "/x-reality/static/js/main.486d4560.chunk.js",
+    "main.js.map": "/x-reality/static/js/main.486d4560.chunk.js.map",
+    "runtime-main.js": "/x-reality/static/js/runtime-main.48bf569d.js",
+    "runtime-main.js.map": "/x-reality/static/js/runtime-main.48bf569d.js.map",
+    "static/js/2.6ec38cea.chunk.js": "/x-reality/static/js/2.6ec38cea.chunk.js",
+    "static/js/2.6ec38cea.chunk.js.map": "/x-reality/static/js/2.6ec38cea.chunk.js.map",
+    "index.html": "/x-reality/index.html",
+    "precache-manifest.cc62eb02675c061c4fec4899b3f9031f.js": "/x-reality/precache-manifest.cc62eb02675c061c4fec4899b3f9031f.js",
+    "service-worker.js": "/x-reality/service-worker.js",
+    "static/css/main.d866904c.chunk.css.map": "/x-reality/static/css/main.d866904c.chunk.css.map",
+    "static/js/2.6ec38cea.chunk.js.LICENSE.txt": "/x-reality/static/js/2.6ec38cea.chunk.js.LICENSE.txt",
+    "static/media/glTF.glb": "/x-reality/static/media/glTF.ce019e05.glb",
+    "static/media/suzanne.glb": "/x-reality/static/media/suzanne.fdd60495.glb"
   },
   "entrypoints": [
-    "static/js/runtime-main.75549f0a.js",
-    "static/js/2.044caf84.chunk.js",
+    "static/js/runtime-main.48bf569d.js",
+    "static/js/2.6ec38cea.chunk.js",
     "static/css/main.d866904c.chunk.css",
-    "static/js/main.64fd87b0.chunk.js"
+    "static/js/main.486d4560.chunk.js"
   ]
 }
