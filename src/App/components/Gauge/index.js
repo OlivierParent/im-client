@@ -39,7 +39,7 @@ export default (props) => {
     needleAngle = THREE.MathUtils.degToRad(-(valueStep * needleValue));
     needleRef.current.rotation.z = needleAngle;
 
-    TICK_MARKS.forEach((tickMark, index) => {
+    TICK_MARKS.forEach((tickMark) => {
       tickMark.ref.current.children[0].material.color.setColorName(
         tickMark.value <= needleValue ? "blue" : tickMark.color
       );

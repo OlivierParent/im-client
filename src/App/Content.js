@@ -19,6 +19,7 @@ import {
   SuzanneMatcapTexture,
   SuzanneNormalTexture,
   SuzanneStandardMaterial,
+  SuzanneToonMaterial,
   Tripod,
 } from "App/components";
 
@@ -36,6 +37,7 @@ export default () => {
     "Suzanne (MatCap Texture)",
     "Suzanne (Normal Texture)",
     "Suzanne (Standard Material)",
+    "Suzanne (Toon Material)",
     "Tripod",
   ];
 
@@ -52,10 +54,12 @@ export default () => {
   const showEffect = useControl("Effect", { type: "boolean", value: false });
   const showStats = useControl("Statistics", { type: "boolean", value: false });
   const showAxesHelper = useControl("Axes Helper", {
+    group: "Helpers",
     type: "boolean",
     value: true,
   });
   const showGridHelper = useControl("Grid Helper", {
+    group: "Helpers",
     type: "boolean",
     value: true,
   });
@@ -66,7 +70,8 @@ export default () => {
   });
   const useComponent = useControl("Component", {
     type: "select",
-    value: components[11],
+    value: components[3],
+    // value: components[11],
     items: components,
   });
 
@@ -124,6 +129,7 @@ export default () => {
           {showComponent("Suzanne (Standard Material)") && (
             <SuzanneStandardMaterial />
           )}
+          {showComponent("Suzanne (Toon Material)") && <SuzanneToonMaterial />}
         </Suspense>
       )}
       {showComponent("Tripod") && <Tripod />}

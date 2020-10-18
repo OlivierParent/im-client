@@ -8,8 +8,8 @@ export default () => {
   const rightLightRef = useResource();
 
   const helperSize = 0.5;
-  const showLightHelpers = useControl("Show helpers", {
-    group: "Light Helpers",
+  const showLightHelpers = useControl("Light helpers", {
+    group: "Helpers",
     type: "boolean",
     value: true,
   });
@@ -69,18 +69,21 @@ export default () => {
         intensity={ambientLightIntensity}
       />
       <directionalLight
+        castShadow={true}
         color={frontLightColor}
         intensity={frontLightIntensity}
         position={[0, 2, 4]}
         ref={frontLightRef}
       />
       <directionalLight
+        castShadow={true}
         color={leftLightColor}
         intensity={leftLightIntensity}
         position={[-4, 0, 0]}
         ref={leftLightRef}
       />
       <directionalLight
+        castShadow={true}
         color={rightLightColor}
         intensity={rightLightIntensity}
         position={[4, 0, 0]}

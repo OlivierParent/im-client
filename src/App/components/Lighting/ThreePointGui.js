@@ -7,8 +7,8 @@ export default () => {
   const fillLightRef = useResource();
   const keyLightRef = useResource();
 
-  const showLightHelpers = useControl("Show helpers", {
-    group: "Light Helpers",
+  const showLightHelpers = useControl("Light helpers", {
+    group: "Helpers",
     type: "boolean",
     value: true,
   });
@@ -29,15 +29,36 @@ export default () => {
     type: "color",
     value: "hsl(0, 0%, 70%)",
   });
+  const backLightIntensity = useControl("Intensity", {
+    group: "Back Light",
+    type: "number",
+    value: 1,
+    min: 0,
+    max: 1,
+  });
   const fillLightColor = useControl("Color", {
     group: "Fill Light",
     type: "color",
     value: "hsl(210, 100%, 70%)",
   });
+  const fillLightIntensity = useControl("Intensity", {
+    group: "Fill Light",
+    type: "number",
+    value: 0.75,
+    min: 0,
+    max: 1,
+  });
   const keyLightColor = useControl("Color", {
     group: "Key Light",
     type: "color",
     value: "hsl(30, 100%, 70%)",
+  });
+  const keyLightIntensity = useControl("Intensity", {
+    group: "Key Light",
+    type: "number",
+    value: 1,
+    min: 0,
+    max: 1,
   });
 
   return (
@@ -47,16 +68,26 @@ export default () => {
         intensity={ambientLightIntensity}
       />
       <spotLight
+        castShadow={true}
         color={backLightColor}
+        intensity={backLightIntensity}
         position={[4, 2, -4]}
         ref={backLightRef}
       />
       <spotLight
+        castShadow={true}
         color={fillLightColor}
+        intensity={fillLightIntensity}
         position={[-4, 2, 4]}
         ref={fillLightRef}
       />
-      <spotLight color={keyLightColor} position={[4, 2, 4]} ref={keyLightRef} />
+      <spotLight
+        castShadow={true}
+        color={keyLightColor}
+        intensity={keyLightIntensity}
+        position={[4, 2, 4]}
+        ref={keyLightRef}
+      />
       {showLightHelpers && (
         <>
           {backLightRef.current && (

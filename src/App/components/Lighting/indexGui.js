@@ -4,13 +4,13 @@ import { useControl } from "react-three-gui";
 
 export default () => {
   const directionalLightRef = useResource();
-  const hemisphereLightRef = useResource();
+  // const hemisphereLightRef = useResource();
   const pointLightRef = useResource();
   const spotLightRef = useResource();
 
   const helperSize = 0.5;
-  const showLightHelpers = useControl("Show helpers", {
-    group: "Light Helpers",
+  const showLightHelpers = useControl("Light helpers", {
+    group: "Helpers",
     type: "boolean",
     value: true,
   });
@@ -47,14 +47,16 @@ export default () => {
         position={[2, 2, 1]}
         ref={directionalLightRef}
       />
-      <hemisphereLight ref={hemisphereLightRef} />
+      {/* <hemisphereLight ref={hemisphereLightRef} /> */}
       <pointLight
+        castShadow={true}
         color={pointLightColor}
         intensity={0.5}
         position={[pointLightPosition.x, 0, pointLightPosition.y]}
         ref={pointLightRef}
       />
       <spotLight
+        castShadow={true}
         color={spotLightColor}
         position={[0, 4, 4]}
         intensity={1}
@@ -67,11 +69,11 @@ export default () => {
               args={[directionalLightRef.current, helperSize]}
             />
           )}
-          {hemisphereLightRef.current && (
+          {/* {hemisphereLightRef.current && (
             <hemisphereLightHelper
               args={[hemisphereLightRef.current, helperSize]}
             />
-          )}
+          )} */}
           {pointLightRef.current && (
             <pointLightHelper args={[pointLightRef.current, helperSize]} />
           )}
