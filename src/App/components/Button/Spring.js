@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as THREE from "three";
 import { useFrame } from "react-three-fiber";
-import { animated, useSpring } from "react-spring/three";
 import { Text } from "@react-three/drei";
+import { animated, useSpring } from "react-spring/three";
 
 export default (props) => {
   const [hover, setHover] = useState(false);

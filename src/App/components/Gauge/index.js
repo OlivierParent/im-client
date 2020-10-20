@@ -56,7 +56,9 @@ export default (props) => {
           <group
             key={index}
             ref={tickMark.ref}
-            rotation={[0, 0, THREE.MathUtils.degToRad(-angleStep * index)]}
+            rotation={[0, 0, -angleStep * index].map((degrees) =>
+              THREE.MathUtils.degToRad(degrees)
+            )}
           >
             <Box args={[0.25, 0.05, 0.02]} position={[1, 0, 0.01]}>
               <meshStandardMaterial
@@ -73,7 +75,11 @@ export default (props) => {
 
       <group position={[0, 0, 0.05]}>
         <group ref={needleRef}>
-          <group rotation={[0, 0, THREE.MathUtils.degToRad(-90)]}>
+          <group
+            rotation={[0, 0, -90].map((degrees) =>
+              THREE.MathUtils.degToRad(degrees)
+            )}
+          >
             <Cone args={[0.03, 1, 4]} castShadow={true} position={[0, 0.5, 0]}>
               <meshStandardMaterial
                 color="orange"
@@ -82,18 +88,13 @@ export default (props) => {
               />
             </Cone>
           </group>
-          {/* <Box args={[1, 0.05, 0.025]} castShadow={true} position={[0.5, 0, 0]}>
-            <meshStandardMaterial
-              color="orange"
-              metalness={0.1}
-              roughness={0.6}
-            />
-          </Box> */}
         </group>
         <Cylinder
           args={[0.1, 0.05, 0.1, 36]}
           castShadow={true}
-          rotation={[THREE.MathUtils.degToRad(-90), 0, 0]}
+          rotation={[-90, 0, 0].map((degrees) =>
+            THREE.MathUtils.degToRad(degrees)
+          )}
         >
           <meshStandardMaterial />
         </Cylinder>

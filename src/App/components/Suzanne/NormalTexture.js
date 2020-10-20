@@ -1,5 +1,5 @@
 import React from "react";
-import { useGLTF, useSubdivision, useNormalTexture } from "@react-three/drei";
+import { useGLTF, useNormalTexture, useSubdivision } from "@react-three/drei";
 
 import suzanne from "./suzanne.glb";
 

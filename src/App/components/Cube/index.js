@@ -12,10 +12,9 @@ export default (props) => {
   const { position } = useSpring({
     position: toggle ? [0, 0, 0] : getPosition(),
   });
-  console.log(position);
 
   function getPosition() {
-    return [(Math.random() * 2 - 1) * 4, (Math.random() * 2 - 1) * 4, 0];
+    return [4, 4, 0].map((value) => (Math.random() * 2 - 1) * value);
   }
 
   return (

@@ -153,7 +153,9 @@ export default (props) => {
           })}
         <mesh
           castShadow={true}
-          rotation={[THREE.MathUtils.degToRad(-90), 0, 0]}
+          rotation={[-90, 0, 0].map((degrees) =>
+            THREE.MathUtils.degToRad(degrees)
+          )}
           position={[0, 0, 0.05]}
         >
           <cylinderBufferGeometry args={[0.1, 0.05, HAND_THICKNESS * 5, 36]} />

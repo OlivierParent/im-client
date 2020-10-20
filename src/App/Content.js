@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import * as THREE from "three";
 import { useControl } from "react-three-gui";
 import { OrbitControls, Stats } from "@react-three/drei";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
@@ -7,6 +8,7 @@ import {
   ButtonSpring,
   Clock,
   Cube,
+  Face,
   Gauge,
   GlTransmissionFormat,
   Lighting,
@@ -33,6 +35,7 @@ export default () => {
     "Clock",
     "Cube",
     "Cube (positioned)",
+    "Face",
     "Gauge",
     "GlTransmissionFormat",
     "Spring",
@@ -55,8 +58,30 @@ export default () => {
     "Three Point Lighting + GUI",
   ];
 
-  const showEffect = useControl("Effect", { type: "boolean", value: false });
-  const showStats = useControl("Statistics", { type: "boolean", value: false });
+  const showEffect = useControl("Effect", {
+    group: "General",
+    type: "boolean",
+    value: false,
+  });
+  const showStats = useControl("Statistics", {
+    group: "General",
+    type: "boolean",
+    value: false,
+  });
+
+  const useComponent = useControl("Component", {
+    group: "General",
+    type: "select",
+    value: components[14],
+    items: components,
+  });
+  const useLighting = useControl("Lighting", {
+    group: "General",
+    type: "select",
+    value: lightings[3],
+    items: lightings,
+  });
+
   const showAxesHelper = useControl("Axes Helper", {
     group: "Helpers",
     type: "boolean",
@@ -66,16 +91,6 @@ export default () => {
     group: "Helpers",
     type: "boolean",
     value: true,
-  });
-  const useLighting = useControl("Lighting", {
-    type: "select",
-    value: lightings[3],
-    items: lightings,
-  });
-  const useComponent = useControl("Component", {
-    type: "select",
-    value: components[8],
-    items: components,
   });
 
   function showLighting(name) {
@@ -116,8 +131,14 @@ export default () => {
       {showComponent("Clock") && <Clock />}
       {showComponent("Cube") && <Cube />}
       {showComponent("Cube (positioned)") && (
-        <Cube position={[1, 1, 1]} rotation={[0.5, 0.5, 0.5]} />
+        <Cube
+          position={[1, 1, 1]}
+          rotation={[45, 45, 45].map((degrees) =>
+            THREE.MathUtils.degToRad(degrees)
+          )}
+        />
       )}
+      {showComponent("Face") && <Face />}
       {showComponent("Gauge") && <Gauge />}
       {true && (
         <Suspense fallback={null}>

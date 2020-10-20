@@ -35,7 +35,7 @@ export default () => {
     type: "number",
     value: 0.4,
     min: 0,
-    max: 1,
+    max: 2,
   });
   const leftLightColor = useControl("Color", {
     group: "Left Light",
@@ -47,7 +47,7 @@ export default () => {
     type: "number",
     value: 1,
     min: 0,
-    max: 1,
+    max: 2,
   });
   const rightLightColor = useControl("Color", {
     group: "Right Light",
@@ -59,7 +59,7 @@ export default () => {
     type: "number",
     value: 1,
     min: 0,
-    max: 1,
+    max: 2,
   });
 
   return (
@@ -93,15 +93,17 @@ export default () => {
         <>
           {frontLightRef.current && (
             <directionalLightHelper
-              args={[frontLightRef.current, helperSize]}
+              args={[frontLightRef.current, helperSize, frontLightColor]}
             />
           )}
           {leftLightRef.current && (
-            <directionalLightHelper args={[leftLightRef.current, helperSize]} />
+            <directionalLightHelper
+              args={[leftLightRef.current, helperSize, leftLightColor]}
+            />
           )}
           {rightLightRef.current && (
             <directionalLightHelper
-              args={[rightLightRef.current, helperSize]}
+              args={[rightLightRef.current, helperSize, rightLightColor]}
             />
           )}
         </>

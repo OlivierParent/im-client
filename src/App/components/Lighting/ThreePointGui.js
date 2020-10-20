@@ -34,7 +34,7 @@ export default () => {
     type: "number",
     value: 1,
     min: 0,
-    max: 1,
+    max: 2,
   });
   const fillLightColor = useControl("Color", {
     group: "Fill Light",
@@ -46,7 +46,7 @@ export default () => {
     type: "number",
     value: 0.75,
     min: 0,
-    max: 1,
+    max: 2,
   });
   const keyLightColor = useControl("Color", {
     group: "Key Light",
@@ -58,7 +58,7 @@ export default () => {
     type: "number",
     value: 1,
     min: 0,
-    max: 1,
+    max: 2,
   });
 
   return (
@@ -91,14 +91,14 @@ export default () => {
       {showLightHelpers && (
         <>
           {backLightRef.current && (
-            <spotLightHelper args={[backLightRef.current]} />
+            <spotLightHelper args={[backLightRef.current, backLightColor]} />
           )}
 
           {fillLightRef.current && (
-            <spotLightHelper args={[fillLightRef.current]} />
+            <spotLightHelper args={[fillLightRef.current, fillLightColor]} />
           )}
           {keyLightRef.current && (
-            <spotLightHelper args={[keyLightRef.current]} />
+            <spotLightHelper args={[keyLightRef.current, keyLightColor]} />
           )}
         </>
       )}
