@@ -10,6 +10,8 @@ export { default as LightingStudio } from "./Lighting/Studio";
 export { default as LightingStudioGui } from "./Lighting/StudioGui";
 export { default as LightingThreePoint } from "./Lighting/ThreePoint";
 export { default as LightingThreePointGui } from "./Lighting/ThreePointGui";
+export { default as Spring } from "./Spring";
+export { default as SpringProps } from "./Spring/Props";
 export { default as Suzanne } from "./Suzanne";
 export { default as SuzanneMatcapTexture } from "./Suzanne/MatcapTexture";
 export { default as SuzanneNormalTexture } from "./Suzanne/NormalTexture";

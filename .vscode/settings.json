@@ -4,9 +4,9 @@
     "gltf"
   ],
   "files.exclude": {
-    ".gitignore": true,
-    ".vscode": true,
-    "node_modules": true,
-    "package-lock.json": true
+    ".gitignore": false,
+    ".vscode": false,
+    "node_modules": false,
+    "package-lock.json": false
   }
 }

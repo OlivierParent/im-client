@@ -1,5 +1,5 @@
 {
-  "name": "im-client",
+  "name": "x-reality",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
@@ -12,9 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "@react-three/cannon": "^0.5.3",
-    "@react-three/drei": "^2.1.1-beta.5",
+    "@react-three/drei": "^2.2.0",
     "@react-three/flex": "^0.5.2",
     "@react-three/postprocessing": "^1.4.1",
+    "d3-ease": "^2.0.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "^3.4.3",

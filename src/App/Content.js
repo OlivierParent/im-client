@@ -15,6 +15,8 @@ import {
   LightingStudioGui,
   LightingThreePoint,
   LightingThreePointGui,
+  Spring,
+  SpringProps,
   Suzanne,
   SuzanneMatcapTexture,
   SuzanneNormalTexture,
@@ -33,6 +35,8 @@ export default () => {
     "Cube (positioned)",
     "Gauge",
     "GlTransmissionFormat",
+    "Spring",
+    "Spring (Props)",
     "Suzanne (default)",
     "Suzanne (MatCap Texture)",
     "Suzanne (Normal Texture)",
@@ -44,7 +48,7 @@ export default () => {
   const lightings = [
     "None",
     "Demo",
-    "Demo + Gui",
+    "Demo + GUI",
     "Studio Lighting",
     "Studio Lighting + GUI",
     "Three Point Lighting",
@@ -70,8 +74,7 @@ export default () => {
   });
   const useComponent = useControl("Component", {
     type: "select",
-    value: components[3],
-    // value: components[11],
+    value: components[8],
     items: components,
   });
 
@@ -103,7 +106,7 @@ export default () => {
         </EffectComposer>
       )}
       {showLighting("Demo") && <Lighting />}
-      {showLighting("Demo + Gui") && <LightingGui />}
+      {showLighting("Demo + GUI") && <LightingGui />}
       {showLighting("Studio Lighting") && <LightingStudio />}
       {showLighting("Studio Lighting + GUI") && <LightingStudioGui />}
       {showLighting("Three Point Lighting") && <LightingThreePoint />}
@@ -119,6 +122,8 @@ export default () => {
       {true && (
         <Suspense fallback={null}>
           {showComponent("GlTransmissionFormat") && <GlTransmissionFormat />}
+          {showComponent("Spring") && <Spring />}
+          {showComponent("Spring (Props)") && <SpringProps />}
           {showComponent("Suzanne (default)") && <Suzanne />}
           {showComponent("Suzanne (MatCap Texture)") && (
             <SuzanneMatcapTexture />
