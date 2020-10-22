@@ -41,15 +41,21 @@ export default (props) => {
 
   useFrame(() => {
     const d = new Date();
-    HAND_HH.current.rotation.z = THREE.MathUtils.degToRad(
-      (d.getHours() + d.getMinutes() / MM) * -(360 / HH)
-    );
-    HAND_MM.current.rotation.z = THREE.MathUtils.degToRad(
-      d.getMinutes() * -(360 / MM)
-    );
-    HAND_SS.current.rotation.z = THREE.MathUtils.degToRad(
-      d.getSeconds() * -(360 / SS)
-    );
+    if (HAND_HH.current) {
+      HAND_HH.current.rotation.z = THREE.MathUtils.degToRad(
+        (d.getHours() + d.getMinutes() / MM) * -(360 / HH)
+      );
+    }
+    if (HAND_MM.current) {
+      HAND_MM.current.rotation.z = THREE.MathUtils.degToRad(
+        d.getMinutes() * -(360 / MM)
+      );
+    }
+    if (HAND_SS.current) {
+      HAND_SS.current.rotation.z = THREE.MathUtils.degToRad(
+        d.getSeconds() * -(360 / SS)
+      );
+    }
   });
 
   return (
