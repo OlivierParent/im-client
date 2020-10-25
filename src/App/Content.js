@@ -11,12 +11,14 @@ import {
   Face,
   Gauge,
   GlTransmissionFormat,
+  Image,
   Lighting,
   LightingGui,
   LightingStudio,
   LightingStudioGui,
   LightingThreePoint,
   LightingThreePointGui,
+  Socket,
   Spring,
   SpringProps,
   Suzanne,
@@ -38,6 +40,8 @@ export default () => {
     "Face",
     "Gauge",
     "GlTransmissionFormat",
+    "Image",
+    "Socket",
     "Spring",
     "Spring (Props)",
     "Suzanne (default)",
@@ -72,7 +76,7 @@ export default () => {
   const useComponent = useControl("Component", {
     group: "General",
     type: "select",
-    value: components[14],
+    value: components[16],
     items: components,
   });
   const useLighting = useControl("Lighting", {
@@ -85,12 +89,12 @@ export default () => {
   const showAxesHelper = useControl("Axes Helper", {
     group: "Helpers",
     type: "boolean",
-    value: true,
+    value: false,
   });
   const showGridHelper = useControl("Grid Helper", {
     group: "Helpers",
     type: "boolean",
-    value: true,
+    value: false,
   });
 
   function showLighting(name) {
@@ -140,9 +144,11 @@ export default () => {
       )}
       {showComponent("Face") && <Face />}
       {showComponent("Gauge") && <Gauge />}
+      {showComponent("Socket") && <Socket />}
       {true && (
         <Suspense fallback={null}>
           {showComponent("GlTransmissionFormat") && <GlTransmissionFormat />}
+          {showComponent("Image") && <Image />}
           {showComponent("Spring") && <Spring />}
           {showComponent("Spring (Props)") && <SpringProps />}
           {showComponent("Suzanne (default)") && <Suzanne />}

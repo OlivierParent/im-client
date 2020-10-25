@@ -1,13 +1,26 @@
 import * as THREE from "three";
 
 export default class {
-  constructor(radius) {
-    this.radius = radius;
+  #radius = 1;
+  #angle = 0;
+
+  constructor(radius = 1) {
+    this.#radius = radius;
   }
+
+  get angle() {
+    return this.#angle;
+  }
+
+  set angle(degrees) {
+    this.#angle = THREE.MathUtils.degToRad(degrees);
+  }
+
   getCoordinates(degrees) {
-    const angle = THREE.MathUtils.degToRad(degrees);
-    const x = Math.cos(angle) * this.radius;
-    const y = Math.sin(angle) * this.radius;
+    this.angle = degrees;
+    const x = Math.cos(this.angle) * this.#radius;
+    const y = Math.sin(this.angle) * this.#radius;
+
     return { x, y };
   }
 }
