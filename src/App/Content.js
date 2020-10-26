@@ -7,6 +7,7 @@ import {
   Button,
   ButtonSpring,
   Clock,
+  ClockDigital,
   Cube,
   Face,
   Gauge,
@@ -34,7 +35,8 @@ export default () => {
     "None",
     "Button",
     "Button (React Spring)",
-    "Clock",
+    "Clock (analogue)",
+    "Clock (digital)",
     "Cube",
     "Cube (positioned)",
     "Face",
@@ -76,7 +78,7 @@ export default () => {
   const useComponent = useControl("Component", {
     group: "General",
     type: "select",
-    value: components[16],
+    value: components[17],
     items: components,
   });
   const useLighting = useControl("Lighting", {
@@ -132,7 +134,8 @@ export default () => {
       {showLighting("Three Point Lighting + GUI") && <LightingThreePointGui />}
       {showComponent("Button") && <Button />}
       {showComponent("Button (React Spring)") && <ButtonSpring />}
-      {showComponent("Clock") && <Clock />}
+      {showComponent("Clock (analogue)") && <Clock />}
+      {showComponent("Clock (digital)") && <ClockDigital />}
       {showComponent("Cube") && <Cube />}
       {showComponent("Cube (positioned)") && (
         <Cube
