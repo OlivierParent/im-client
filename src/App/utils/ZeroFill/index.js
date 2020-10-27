@@ -14,7 +14,7 @@ export default class {
   }
 
   set number(number) {
-    this.#number = Math.round(number).toString();
+    this.#number = Math.floor(number).toString();
   }
 
   toString() {
