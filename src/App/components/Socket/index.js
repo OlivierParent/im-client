@@ -8,15 +8,15 @@ export default () => {
   const distanceRef = useRef();
   const speedRef = useRef();
 
-  const port = 3001;
-  const socket = io(`http://localhost:${port}`);
+  const PORT = 3001;
+  const socket = io(`http://localhost:${PORT}`);
 
   socket.on("connect", () => {
     console.log("Socket connected: ", socket.connected);
   });
 
   socket.on("disconnect", () => {
-    console.log("Socket connected: ", socket.connected);
+    console.log("Socket disconnected");
   });
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default () => {
           color="hsl(210, 100%, 70%)"
           fontSize={1}
           ref={distanceRef}
-          text="socket.IO"
+          text="Socket.IO"
         />
       </Box>
       <Box>
@@ -49,7 +49,7 @@ export default () => {
           color="hsl(30, 100%, 70%)"
           fontSize={1}
           ref={speedRef}
-          text="socket.IO"
+          text="Socket.IO"
         />
       </Box>
     </Flex>

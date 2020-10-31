@@ -11,7 +11,6 @@ import {
   Cube,
   Face,
   Gauge,
-  GlTransmissionFormat,
   Image,
   Lighting,
   LightingGui,
@@ -19,6 +18,8 @@ import {
   LightingStudioGui,
   LightingThreePoint,
   LightingThreePointGui,
+  Logo,
+  LogoDouble,
   Socket,
   Spring,
   SpringProps,
@@ -37,12 +38,13 @@ export default () => {
     "Button (React Spring)",
     "Clock (analogue)",
     "Clock (digital)",
-    "Cube",
     "Cube (positioned)",
+    "Cube",
     "Face",
     "Gauge",
-    "GlTransmissionFormat",
     "Image",
+    "Logo",
+    "Logo (double)",
     "Socket",
     "Spring",
     "Spring (Props)",
@@ -78,7 +80,7 @@ export default () => {
   const useComponent = useControl("Component", {
     group: "General",
     type: "select",
-    value: components[17],
+    value: components[16],
     items: components,
   });
   const useLighting = useControl("Lighting", {
@@ -150,7 +152,8 @@ export default () => {
       {showComponent("Socket") && <Socket />}
       {true && (
         <Suspense fallback={null}>
-          {showComponent("GlTransmissionFormat") && <GlTransmissionFormat />}
+          {showComponent("Logo") && <Logo />}
+          {showComponent("Logo (double)") && <LogoDouble />}
           {showComponent("Image") && <Image />}
           {showComponent("Spring") && <Spring />}
           {showComponent("Spring (Props)") && <SpringProps />}
