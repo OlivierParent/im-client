@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
+import { useFrame } from "react-three-fiber";
+import { useGLTF } from "@react-three/drei";
 
 import animationGlb from "./animation.glb";
-import { useFrame } from "react-three-fiber";
 
 export default () => {
   const { animations, scene } = useGLTF(animationGlb, true);
@@ -15,6 +15,7 @@ export default () => {
       mixer.clipAction(animations[0], animationRef.current).play();
     }
   }, []);
+
   useFrame((state, delta) => {
     mixer.update(delta);
   });
