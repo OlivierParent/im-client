@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import { Route, Router } from "wouter";
 import * as THREE from "three";
 import { useControl } from "react-three-gui";
 import { OrbitControls, Stats } from "@react-three/drei";
@@ -30,6 +31,9 @@ import {
   SuzanneStandardMaterial,
   SuzanneToonMaterial,
   Tripod,
+  Wouter,
+  WouterPathRouter,
+  WouterPathWouter,
 } from "App/components";
 
 export default () => {
@@ -56,6 +60,7 @@ export default () => {
     "Suzanne (Standard Material)",
     "Suzanne (Toon Material)",
     "Tripod",
+    "Wouter (router)",
   ];
 
   const lightings = [
@@ -112,7 +117,8 @@ export default () => {
   }
 
   return (
-    <>
+    <Router base={process.env.PUBLIC_URL}>
+      <Route path="/router-page-1" component={Clock} />
       <group>
         {true && (
           <OrbitControls
@@ -174,6 +180,9 @@ export default () => {
         </Suspense>
       )}
       {showComponent("Tripod") && <Tripod />}
-    </>
+      {showComponent("Wouter (router)") && <Wouter />}
+      <Route component={WouterPathRouter} path="/router" />
+      <Route component={WouterPathWouter} path="/wouter" />
+    </Router>
   );
 };
