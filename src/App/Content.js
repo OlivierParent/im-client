@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useCallback, useEffect, useState } from "react";
 import { Route, Router } from "wouter";
 import * as THREE from "three";
 import { useControl } from "react-three-gui";
@@ -35,6 +35,20 @@ import {
   WouterPathRouter,
   WouterPathWouter,
 } from "App/components";
+
+const currentLoc = () => window.location.hash.replace("#", "") || "/";
+const useHashLocation = () => {
+  const [loc, setLoc] = useState(currentLoc());
+
+  useEffect(() => {
+    const handler = () => setLoc(currentLoc());
+    window.addEventListener("hashchange", handler);
+    return () => window.removeEventListener("hashchange", handler);
+  }, []);
+
+  const navigate = useCallback((to) => (window.location.hash = to), []);
+  return [loc, navigate];
+};
 
 export default () => {
   const components = [
@@ -117,7 +131,7 @@ export default () => {
   }
 
   return (
-    <Router base={process.env.PUBLIC_URL}>
+    <Router base={process.env.PUBLIC_URL} hook={useHashLocation}>
       <Route path="/router-page-1" component={Clock} />
       <group>
         {true && (
