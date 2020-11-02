@@ -1,3 +1,4 @@
+export { default as Animation } from "./Animation";
 export { default as Button } from "./Button";
 export { default as ButtonSpring } from "./Button/Spring";
 export { default as Clock } from "./Clock";

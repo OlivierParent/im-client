@@ -1,10 +1,10 @@
 import React from "react";
 import { useGLTF, useMatcapTexture, useSubdivision } from "@react-three/drei";
 
-import suzanne from "./suzanne.glb";
+import suzanneGlb from "./suzanne.glb";
 
 export default () => {
-  const { nodes } = useGLTF(suzanne, true);
+  const { nodes } = useGLTF(suzanneGlb, true);
   const suzanneRef = useSubdivision(2);
 
   const [matcap] = useMatcapTexture(

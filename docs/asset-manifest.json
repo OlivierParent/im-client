@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/x-reality/static/css/main.c24f9013.chunk.css",
-    "main.js": "/x-reality/static/js/main.d50d9087.chunk.js",
-    "main.js.map": "/x-reality/static/js/main.d50d9087.chunk.js.map",
+    "main.js": "/x-reality/static/js/main.051c529f.chunk.js",
+    "main.js.map": "/x-reality/static/js/main.051c529f.chunk.js.map",
     "runtime-main.js": "/x-reality/static/js/runtime-main.afbf65a1.js",
     "runtime-main.js.map": "/x-reality/static/js/runtime-main.afbf65a1.js.map",
     "static/js/2.36053bdd.chunk.js": "/x-reality/static/js/2.36053bdd.chunk.js",
@@ -11,13 +11,14 @@
     "static/css/main.c24f9013.chunk.css.map": "/x-reality/static/css/main.c24f9013.chunk.css.map",
     "static/js/2.36053bdd.chunk.js.LICENSE.txt": "/x-reality/static/js/2.36053bdd.chunk.js.LICENSE.txt",
     "static/media/UV_Grid_Sm.8ab40f71.jpg": "/x-reality/static/media/UV_Grid_Sm.8ab40f71.jpg",
-    "static/media/glTF.d3501fc2.glb": "/x-reality/static/media/glTF.d3501fc2.glb",
+    "static/media/animation.07175b80.glb": "/x-reality/static/media/animation.07175b80.glb",
+    "static/media/gltf-logo.d3501fc2.glb": "/x-reality/static/media/gltf-logo.d3501fc2.glb",
     "static/media/suzanne.a6e83718.glb": "/x-reality/static/media/suzanne.a6e83718.glb"
   },
   "entrypoints": [
     "static/js/runtime-main.afbf65a1.js",
     "static/js/2.36053bdd.chunk.js",
     "static/css/main.c24f9013.chunk.css",
-    "static/js/main.d50d9087.chunk.js"
+    "static/js/main.051c529f.chunk.js"
   ]
 }

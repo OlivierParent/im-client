@@ -4,6 +4,7 @@ import { useControl } from "react-three-gui";
 import { OrbitControls, Stats } from "@react-three/drei";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import {
+  Animation,
   Button,
   ButtonSpring,
   Clock,
@@ -34,6 +35,7 @@ import {
 export default () => {
   const components = [
     "None",
+    "Animation",
     "Button",
     "Button (React Spring)",
     "Clock (analogue)",
@@ -152,6 +154,7 @@ export default () => {
       {showComponent("Socket") && <Socket />}
       {true && (
         <Suspense fallback={null}>
+          {showComponent("Animation") && <Animation />}
           {showComponent("Logo") && <Logo />}
           {showComponent("Logo (double)") && <LogoDouble />}
           {showComponent("Image") && <Image />}
