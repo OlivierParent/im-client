@@ -24,6 +24,7 @@ export { default as SuzanneNormalTexture } from "./Suzanne/NormalTexture";
 export { default as SuzanneStandardMaterial } from "./Suzanne/StandardMaterial";
 export { default as SuzanneToonMaterial } from "./Suzanne/ToonMaterial";
 export { default as Tripod } from "./Tripod";
+export { default as World } from "./World";
 export { default as Wouter } from "./Wouter";
 export { default as WouterPathRouter } from "./Wouter/PathRouter";
 export { default as WouterPathWouter } from "./Wouter/PathWouter";

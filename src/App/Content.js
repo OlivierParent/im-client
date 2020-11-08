@@ -1,13 +1,7 @@
 import React, { Suspense, useCallback, useEffect, useState } from "react";
 import { Route, Router } from "wouter";
 import * as THREE from "three";
-import { useControl } from "react-three-gui";
-import {
-  FlyControls,
-  OrbitControls,
-  PointerLockControls,
-  Stats,
-} from "@react-three/drei";
+import { OrbitControls, Stats } from "@react-three/drei";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import {
   Animation,
@@ -36,10 +30,12 @@ import {
   SuzanneStandardMaterial,
   SuzanneToonMaterial,
   Tripod,
+  World,
   Wouter,
   WouterPathRouter,
   WouterPathWouter,
 } from "App/components";
+import { useControl } from "react-three-gui";
 
 const currentLoc = () => window.location.hash.replace("#", "") || "/";
 const useHashLocation = () => {
@@ -79,6 +75,7 @@ export default () => {
     "Suzanne (Standard Material)",
     "Suzanne (Toon Material)",
     "Tripod",
+    "World",
     "Wouter (router)",
   ];
 
@@ -92,17 +89,7 @@ export default () => {
     "Three Point Lighting + GUI",
   ];
 
-  const enableFlyControls = useControl("Fly Controls", {
-    group: "General",
-    type: "boolean",
-    value: false,
-  });
   const enableOrbitControls = useControl("Orbit Controls", {
-    group: "General",
-    type: "boolean",
-    value: false,
-  });
-  const enablePointerLockControls = useControl("PointerLock Controls", {
     group: "General",
     type: "boolean",
     value: false,
@@ -150,16 +137,8 @@ export default () => {
   }
 
   return (
-    <Router>
+    <Router base={process.env.PUBLIC_URL} hook={useHashLocation}>
       <>
-        {enableFlyControls && (
-          <FlyControls
-            autoForward={true}
-            dragToLook={true}
-            movementSpeed={1.0}
-            rollSpeed={0.005}
-          />
-        )}
         {enableOrbitControls && (
           <OrbitControls
             enablePan={true}
@@ -167,7 +146,6 @@ export default () => {
             enableZoom={true}
           />
         )}
-        {enablePointerLockControls && <PointerLockControls />}
         {showStats && <Stats />}
         {showAxesHelper && <axesHelper />}
         {showGridHelper && <gridHelper args={[10, 10, 0xffffff, 0x333333]} />}
@@ -221,6 +199,7 @@ export default () => {
         </Suspense>
       )}
       {showComponent("Tripod") && <Tripod />}
+      {showComponent("World") && <World />}
       {showComponent("Wouter (router)") && <Wouter />}
       <Route component={WouterPathRouter} path="/router" />
       <Route component={WouterPathWouter} path="/wouter" />
