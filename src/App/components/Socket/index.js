@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Text } from "@react-three/drei";
 import { Box, Flex } from "@react-three/flex";
-import io from "socket.io-client";
+import { Manager } from "socket.io-client";
 import { ZeroFill } from "App/utils";
 
 export default () => {
@@ -9,7 +9,8 @@ export default () => {
   const speedRef = useRef();
 
   const PORT = 3001;
-  const socket = io(`http://localhost:${PORT}`);
+  const manager = new Manager(`http://localhost:${PORT}`);
+  const socket = manager.socket("/");
 
   socket.on("connect", () => {
     console.log("Socket connected: ", socket.connected);

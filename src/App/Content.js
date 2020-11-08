@@ -1,7 +1,12 @@
 import React, { Suspense } from "react";
 import * as THREE from "three";
 import { useControl } from "react-three-gui";
-import { OrbitControls, Stats } from "@react-three/drei";
+import {
+  FlyControls,
+  OrbitControls,
+  PointerLockControls,
+  Stats,
+} from "@react-three/drei";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import {
   Animation,
@@ -31,6 +36,7 @@ import {
   SuzanneToonMaterial,
   Tripod,
 } from "App/components";
+import { useFrame } from "react-three-fiber";
 
 export default () => {
   const components = [
@@ -68,6 +74,21 @@ export default () => {
     "Three Point Lighting + GUI",
   ];
 
+  const enableFlyControls = useControl("Fly Controls", {
+    group: "General",
+    type: "boolean",
+    value: false,
+  });
+  const enableOrbitControls = useControl("Orbit Controls", {
+    group: "General",
+    type: "boolean",
+    value: false,
+  });
+  const enablePointerLockControls = useControl("PointerLock Controls", {
+    group: "General",
+    type: "boolean",
+    value: false,
+  });
   const showEffect = useControl("Effect", {
     group: "General",
     type: "boolean",
@@ -78,7 +99,6 @@ export default () => {
     type: "boolean",
     value: false,
   });
-
   const useComponent = useControl("Component", {
     group: "General",
     type: "select",
@@ -113,18 +133,27 @@ export default () => {
 
   return (
     <>
-      <group>
-        {true && (
+      <>
+        {enableFlyControls && (
+          <FlyControls
+            autoForward={true}
+            dragToLook={true}
+            movementSpeed={1.0}
+            rollSpeed={0.005}
+          />
+        )}
+        {enableOrbitControls && (
           <OrbitControls
             enablePan={true}
             enableRotate={true}
             enableZoom={true}
           />
         )}
+        {enablePointerLockControls && <PointerLockControls />}
         {showStats && <Stats />}
         {showAxesHelper && <axesHelper />}
         {showGridHelper && <gridHelper args={[10, 10, 0xffffff, 0x333333]} />}
-      </group>
+      </>
       {showEffect && (
         <EffectComposer>
           <Bloom height={500} luminanceThreshold={0} luminanceSmoothing={0.9} />
