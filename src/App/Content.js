@@ -1,4 +1,5 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useCallback, useEffect, useState } from "react";
+import { Route, Router } from "wouter";
 import * as THREE from "three";
 import { useControl } from "react-three-gui";
 import {
@@ -35,8 +36,24 @@ import {
   SuzanneStandardMaterial,
   SuzanneToonMaterial,
   Tripod,
+  Wouter,
+  WouterPathRouter,
+  WouterPathWouter,
 } from "App/components";
-import { useFrame } from "react-three-fiber";
+
+const currentLoc = () => window.location.hash.replace("#", "") || "/";
+const useHashLocation = () => {
+  const [loc, setLoc] = useState(currentLoc());
+
+  useEffect(() => {
+    const handler = () => setLoc(currentLoc());
+    window.addEventListener("hashchange", handler);
+    return () => window.removeEventListener("hashchange", handler);
+  }, []);
+
+  const navigate = useCallback((to) => (window.location.hash = to), []);
+  return [loc, navigate];
+};
 
 export default () => {
   const components = [
@@ -53,7 +70,7 @@ export default () => {
     "Image",
     "Logo",
     "Logo (double)",
-    "Socket",
+    "Socket (Socket.IO 3.0)",
     "Spring",
     "Spring (Props)",
     "Suzanne (default)",
@@ -62,6 +79,7 @@ export default () => {
     "Suzanne (Standard Material)",
     "Suzanne (Toon Material)",
     "Tripod",
+    "Wouter (router)",
   ];
 
   const lightings = [
@@ -132,7 +150,7 @@ export default () => {
   }
 
   return (
-    <>
+    <Router>
       <>
         {enableFlyControls && (
           <FlyControls
@@ -180,7 +198,7 @@ export default () => {
       )}
       {showComponent("Face") && <Face />}
       {showComponent("Gauge") && <Gauge />}
-      {showComponent("Socket") && <Socket />}
+      {showComponent("Socket (Socket.IO 3.0)") && <Socket />}
       {true && (
         <Suspense fallback={null}>
           {showComponent("Animation") && <Animation />}
@@ -203,6 +221,9 @@ export default () => {
         </Suspense>
       )}
       {showComponent("Tripod") && <Tripod />}
-    </>
+      {showComponent("Wouter (router)") && <Wouter />}
+      <Route component={WouterPathRouter} path="/router" />
+      <Route component={WouterPathWouter} path="/wouter" />
+    </Router>
   );
 };
