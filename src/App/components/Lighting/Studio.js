@@ -2,7 +2,7 @@ import React from "react";
 
 export default () => {
   return (
-    <group>
+    <>
       <ambientLight intensity={0.1} />
       <directionalLight
         castShadow={true}
@@ -20,7 +20,6 @@ export default () => {
         color="hsl(30, 100%, 70%)"
         position={[4, 0, 0]}
       />
-      s
-    </group>
+    </>
   );
 };

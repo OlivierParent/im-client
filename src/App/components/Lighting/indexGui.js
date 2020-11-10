@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import * as THREE from "three";
 import { useFrame, useResource, useThree } from "react-three-fiber";
 import { useControl } from "react-three-gui";
@@ -65,7 +65,7 @@ export default () => {
   const spotLightColor = useControl("Color", {
     group: "Spot Light",
     type: "color",
-    // value: "#ffcc77",
+    value: "#ffcc77",
   });
   const spotLightIntensity = useControl("Intensity", {
     group: "Spot Light",
@@ -91,7 +91,10 @@ export default () => {
 
   return (
     <>
-      <ambientLight intensity={ambientLightIntensity} />
+      <ambientLight
+        color={ambientLightColor}
+        intensity={ambientLightIntensity}
+      />
       <directionalLight
         castShadow={true}
         color={directionalLightColor}
@@ -108,14 +111,14 @@ export default () => {
         ref={pointLightRef}
       />
       <spotLight
+        angle={THREE.MathUtils.degToRad(30)}
         castShadow={true}
         color={spotLightColor}
-        position={[0, 4, 4]}
         intensity={spotLightIntensity}
+        penumbra={0.5}
+        position={[spotLightPosition.x, 4, spotLightPosition.y]}
         ref={spotLightRef}
         target={target}
-        penumbra={0.5}
-        angle={THREE.MathUtils.degToRad(30)}
       />
       {showLightHelpers && (
         <>

@@ -63,7 +63,7 @@ export default () => {
   });
 
   return (
-    <group>
+    <>
       <ambientLight
         color={ambientLightColor}
         intensity={ambientLightIntensity}
@@ -108,6 +108,6 @@ export default () => {
           )}
         </>
       )}
-    </group>
+    </>
   );
 };

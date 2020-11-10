@@ -20,6 +20,7 @@ export default (props) => {
         .map((value, index) => {
           return (
             <group
+              key={index}
               position={[0, 0, 0].map((v, i) =>
                 index === i ? length / 2 + thickness * 2 : v
               )}

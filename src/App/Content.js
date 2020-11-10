@@ -21,6 +21,7 @@ import {
   LightingThreePointGui,
   Logo,
   LogoDouble,
+  LoremIpsum,
   Socket,
   Spring,
   SpringProps,
@@ -66,6 +67,7 @@ export default () => {
     "Image",
     "Logo",
     "Logo (double)",
+    "Lorem Ipsum",
     "Socket (Socket.IO 3.0)",
     "Spring",
     "Spring (Props)",
@@ -107,7 +109,7 @@ export default () => {
   const useComponent = useControl("Component", {
     group: "General",
     type: "select",
-    value: components[16],
+    value: components[17],
     items: components,
   });
   const useLighting = useControl("Lighting", {
@@ -176,12 +178,14 @@ export default () => {
       )}
       {showComponent("Face") && <Face />}
       {showComponent("Gauge") && <Gauge />}
+
       {showComponent("Socket (Socket.IO 3.0)") && <Socket />}
       {true && (
         <Suspense fallback={null}>
           {showComponent("Animation") && <Animation />}
           {showComponent("Logo") && <Logo />}
           {showComponent("Logo (double)") && <LogoDouble />}
+          {showComponent("Lorem Ipsum") && <LoremIpsum />}
           {showComponent("Image") && <Image />}
           {showComponent("Spring") && <Spring />}
           {showComponent("Spring (Props)") && <SpringProps />}

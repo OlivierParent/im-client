@@ -74,6 +74,7 @@ export default (props) => {
             return (
               <Text
                 color={HAND_SS_COLOR}
+                key={index}
                 position={[x, y, 0.01]}
                 scale={[1.2, 1.2, 1]}
               >

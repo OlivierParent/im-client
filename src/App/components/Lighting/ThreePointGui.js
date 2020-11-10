@@ -32,7 +32,7 @@ export default () => {
   const backLightIntensity = useControl("Intensity", {
     group: "Back Light",
     type: "number",
-    value: 1,
+    value: 0.75,
     min: 0,
     max: 2,
   });
@@ -56,13 +56,13 @@ export default () => {
   const keyLightIntensity = useControl("Intensity", {
     group: "Key Light",
     type: "number",
-    value: 1,
+    value: 0.75,
     min: 0,
     max: 2,
   });
 
   return (
-    <group>
+    <>
       <ambientLight
         color={ambientLightColor}
         intensity={ambientLightIntensity}
@@ -102,6 +102,6 @@ export default () => {
           )}
         </>
       )}
-    </group>
+    </>
   );
 };
