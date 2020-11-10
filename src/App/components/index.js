@@ -16,6 +16,7 @@ export { default as LightingThreePointGui } from "./Lighting/ThreePointGui";
 export { default as Logo } from "./Logo";
 export { default as LogoDouble } from "./Logo/Double";
 export { default as LoremIpsum } from "./LoremIpsum";
+export { default as Normals } from "./Normals";
 export { default as Socket } from "./Socket";
 export { default as Spring } from "./Spring";
 export { default as SpringProps } from "./Spring/Props";

@@ -22,6 +22,7 @@ import {
   Logo,
   LogoDouble,
   LoremIpsum,
+  Normals,
   Socket,
   Spring,
   SpringProps,
@@ -68,6 +69,7 @@ export default () => {
     "Logo",
     "Logo (double)",
     "Lorem Ipsum",
+    "Normals",
     "Socket (Socket.IO 3.0)",
     "Spring",
     "Spring (Props)",
@@ -109,13 +111,13 @@ export default () => {
   const useComponent = useControl("Component", {
     group: "General",
     type: "select",
-    value: components[17],
+    value: "Suzanne (default)",
     items: components,
   });
   const useLighting = useControl("Lighting", {
     group: "General",
     type: "select",
-    value: lightings[3],
+    value: "Studio Lighting",
     items: lightings,
   });
 
@@ -139,7 +141,7 @@ export default () => {
   }
 
   return (
-    <Router base={process.env.PUBLIC_URL} hook={useHashLocation}>
+    <>
       <>
         {enableOrbitControls && (
           <OrbitControls
@@ -186,6 +188,7 @@ export default () => {
           {showComponent("Logo") && <Logo />}
           {showComponent("Logo (double)") && <LogoDouble />}
           {showComponent("Lorem Ipsum") && <LoremIpsum />}
+          {showComponent("Normals") && <Normals />}
           {showComponent("Image") && <Image />}
           {showComponent("Spring") && <Spring />}
           {showComponent("Spring (Props)") && <SpringProps />}
@@ -205,8 +208,10 @@ export default () => {
       {showComponent("Tripod") && <Tripod />}
       {showComponent("World") && <World />}
       {showComponent("Wouter (router)") && <Wouter />}
-      <Route component={WouterPathRouter} path="/router" />
-      <Route component={WouterPathWouter} path="/wouter" />
-    </Router>
+      <Router base={process.env.PUBLIC_URL} hook={useHashLocation}>
+        <Route component={WouterPathRouter} path="/router" />
+        <Route component={WouterPathWouter} path="/wouter" />
+      </Router>
+    </>
   );
 };
