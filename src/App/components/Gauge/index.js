@@ -4,6 +4,12 @@ import * as THREE from "three";
 import { useFrame } from "react-three-fiber";
 import { Box, Circle, Cone, Cylinder } from "@react-three/drei";
 
+const ANGLE_RANGE = 270;
+const NEEDLE_STEP = {
+  DOWN: -250,
+  UP: 60,
+};
+
 export default (props) => {
   const TICK_MARKS = [
     { color: "green", label: "0", ref: useRef(), value: 0 },
@@ -16,10 +22,6 @@ export default (props) => {
     { color: "red", label: "70", ref: useRef(), value: 7000 },
     { color: "red", label: "80", ref: useRef(), value: 8000 },
   ];
-  const ANGLE_RANGE = 270;
-  const NEEDLE_STEP_DOWN = -250;
-  const NEEDLE_STEP_UP = 60;
-
   const angleStep = ANGLE_RANGE / (TICK_MARKS.length - 1);
   const angleStart = THREE.MathUtils.degToRad(-(90 + (360 - ANGLE_RANGE) / 2));
   const valueRange = (TICK_MARKS.length - 1) * 1000;
@@ -27,13 +29,13 @@ export default (props) => {
   const needleRef = useRef();
   let needleAngle = 0;
   let needleValue = 0;
-  let needleStep = NEEDLE_STEP_UP;
+  let needleStep = NEEDLE_STEP.UP;
 
   useFrame(() => {
     if (needleValue <= 0) {
-      needleStep = NEEDLE_STEP_UP;
+      needleStep = NEEDLE_STEP.UP;
     } else if (valueRange <= needleValue) {
-      needleStep = NEEDLE_STEP_DOWN;
+      needleStep = NEEDLE_STEP.DOWN;
     }
     needleValue += needleStep;
     needleAngle = THREE.MathUtils.degToRad(-(valueStep * needleValue));

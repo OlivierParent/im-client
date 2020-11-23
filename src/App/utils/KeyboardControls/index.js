@@ -1,96 +1,109 @@
+const AZERTY = {
+  LEFT: "KeyQ",
+  UP: "KeyZ",
+};
+const DIRECTION = {
+  BACK: -1,
+  DOWN: -1,
+  FORWARD: 1,
+  LEFT: -1,
+  NONE: 0,
+  RIGHT: 1,
+  UP: 1,
+};
+const QWERTY = {
+  LEFT: "KeyA",
+  UP: "KeyW",
+};
+
 class KeyboardControls {
-  static #MOVE_SPEED = 0.1;
-  static #DIRECTION = {
-    BACK: -1,
-    DOWN: -1,
-    FORWARD: 1,
-    LEFT: -1,
-    NONE: 0,
-    RIGHT: 1,
-    UP: 1,
-  };
-
-  static #forwardDirection = KeyboardControls.#DIRECTION.NONE;
-  static #rightDirection = KeyboardControls.#DIRECTION.NONE;
-  static #upDirection = KeyboardControls.#DIRECTION.NONE;
-
-  static get MOVE_SPEED() {
-    return KeyboardControls.#MOVE_SPEED;
-  }
+  static #forwardDirection = DIRECTION.NONE;
+  static #keyboard = QWERTY;
+  static #rightDirection = DIRECTION.NONE;
+  static #upDirection = DIRECTION.NONE;
 
   static get forwardDirection() {
-    return KeyboardControls.#forwardDirection;
+    return this.#forwardDirection;
   }
 
   static get rightDirection() {
-    return KeyboardControls.#rightDirection;
+    return this.#rightDirection;
   }
 
   static get upDirection() {
-    return KeyboardControls.#upDirection;
+    return this.#upDirection;
   }
 
   static keyDownHandler(event) {
-    console.log("keyDownHandler", `${event.key}`);
-    switch (event.key) {
+    console.log("KeyboardControls: keyDownHandler", `'${event.code}'`);
+    switch (event.code) {
       case "ArrowDown":
-      case "s":
-        KeyboardControls.#forwardDirection = KeyboardControls.#DIRECTION.BACK;
+      case "KeyS":
+        KeyboardControls.#forwardDirection = DIRECTION.BACK;
         break;
       case "ArrowLeft":
-      case "a":
-        KeyboardControls.#rightDirection = KeyboardControls.#DIRECTION.LEFT;
+      case KeyboardControls.#keyboard.LEFT:
+        KeyboardControls.#rightDirection = DIRECTION.LEFT;
         break;
       case "ArrowRight":
-      case "d":
-        KeyboardControls.#rightDirection = KeyboardControls.#DIRECTION.RIGHT;
+      case "KeyD":
+        KeyboardControls.#rightDirection = DIRECTION.RIGHT;
         break;
       case "ArrowUp":
-      case "w":
-        KeyboardControls.#forwardDirection =
-          KeyboardControls.#DIRECTION.FORWARD;
+      case KeyboardControls.#keyboard.UP:
+        KeyboardControls.#forwardDirection = DIRECTION.FORWARD;
         break;
-      case "f":
-        KeyboardControls.#upDirection = KeyboardControls.#DIRECTION.DOWN;
+      case "KeyF":
+        KeyboardControls.#upDirection = DIRECTION.DOWN;
         break;
-      case "r":
-        KeyboardControls.#upDirection = KeyboardControls.#DIRECTION.UP;
+      case "KeyR":
+        KeyboardControls.#upDirection = DIRECTION.UP;
         break;
     }
   }
 
   static keyUpHandler(event) {
-    console.log("keyUpHandler", `${event.key}`);
-    switch (event.key) {
+    console.log("KeyboardControls: keyUpHandler", `'${event.code}'`);
+    switch (event.code) {
       case "ArrowDown":
       case "ArrowUp":
-      case "s":
-      case "w":
-        KeyboardControls.#forwardDirection = KeyboardControls.#DIRECTION.NONE;
+      case "KeyS":
+      case KeyboardControls.#keyboard.UP:
+        KeyboardControls.#forwardDirection = DIRECTION.NONE;
         break;
       case "ArrowLeft":
       case "ArrowRight":
-      case "a":
-      case "d":
-        KeyboardControls.#rightDirection = KeyboardControls.#DIRECTION.NONE;
+      case "KeyD":
+      case KeyboardControls.#keyboard.LEFT:
+        KeyboardControls.#rightDirection = DIRECTION.NONE;
         break;
-      case "f":
-      case "r":
-        KeyboardControls.#upDirection = KeyboardControls.#DIRECTION.NONE;
+      case "KeyF":
+      case "KeyR":
+        KeyboardControls.#upDirection = DIRECTION.NONE;
         break;
     }
   }
 
   static addEventListeners() {
-    console.info("addEventListeners");
+    console.info("KeyboardControls: addEventListeners");
     window.addEventListener("keydown", KeyboardControls.keyDownHandler);
     window.addEventListener("keyup", KeyboardControls.keyUpHandler);
   }
 
   static removeEventListeners() {
-    console.info("removeEventListeners");
+    console.info("KeyboardControls: removeEventListeners");
     window.removeEventListener("keydown", KeyboardControls.keyDownHandler);
     window.removeEventListener("keyup", KeyboardControls.keyUpHandler);
+  }
+
+  static setKeyboardAzerty() {
+    console.log(this.#keyboard);
+    this.#keyboard = AZERTY;
+    console.log(this.#keyboard);
+  }
+
+  static setKeyboardQwerty() {
+    this.#keyboard = QWERTY;
   }
 }
 

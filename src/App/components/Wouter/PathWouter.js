@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { Text } from "@react-three/drei";
 
 export default () => {
-  const [location, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
 
   return (
     <Text

@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
 import { useFrame } from "react-three-fiber";
 import { Text } from "@react-three/drei";
 import { ZeroFill } from "App/utils";
@@ -6,7 +7,11 @@ import { ZeroFill } from "App/utils";
 export default (props) => {
   const clockRef = useRef();
 
-  let s = 0;
+  useEffect(() => {
+    if (clockRef.current) {
+      clockRef.current.rotation.x = THREE.MathUtils.degToRad(-30);
+    }
+  }, []);
 
   useFrame(() => {
     let d = new Date();

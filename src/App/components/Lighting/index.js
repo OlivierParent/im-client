@@ -11,7 +11,7 @@ export default () => {
         intensity={1}
         position={[4, 4, 1]}
       />
-      {/* <hemisphereLight /> */}
+      <hemisphereLight />
       <pointLight
         castShadow={true}
         color={0xffcc77}

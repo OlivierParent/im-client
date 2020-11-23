@@ -16,7 +16,7 @@ export default (props) => {
       </mesh>
 
       {Array(3)
-        .fill(null)
+        .fill()
         .map((value, index) => {
           return (
             <group

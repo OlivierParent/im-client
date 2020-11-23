@@ -6,8 +6,6 @@ export default (props) => {
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x00ff00);
 
-  useFrame(() => {});
-
   return (
     <group
       onClick={() => setColor(0xff0000)}

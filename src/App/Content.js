@@ -39,18 +39,19 @@ import {
 } from "App/components";
 import { useControl } from "react-three-gui";
 
-const currentLoc = () => window.location.hash.replace("#", "") || "/";
+const currentLocation = () => window.location.hash.replace("#", "") || "/";
 const useHashLocation = () => {
-  const [loc, setLoc] = useState(currentLoc());
+  const [location, setLocation] = useState(currentLocation());
 
   useEffect(() => {
-    const handler = () => setLoc(currentLoc());
+    console.log(window.location.hash);
+    const handler = () => setLocation(currentLocation());
     window.addEventListener("hashchange", handler);
     return () => window.removeEventListener("hashchange", handler);
   }, []);
 
   const navigate = useCallback((to) => (window.location.hash = to), []);
-  return [loc, navigate];
+  return [location, navigate];
 };
 
 export default () => {
@@ -93,8 +94,8 @@ export default () => {
     "Three Point Lighting + GUI",
   ];
 
-  const enableOrbitControls = useControl("Orbit Controls", {
-    group: "General",
+  const enableOrbitControls = useControl("Orbit", {
+    group: "Controls",
     type: "boolean",
     value: false,
   });
@@ -141,7 +142,7 @@ export default () => {
   }
 
   return (
-    <>
+    <Router base={process.env.PUBLIC_URL} hook={useHashLocation}>
       <>
         {enableOrbitControls && (
           <OrbitControls
@@ -208,10 +209,8 @@ export default () => {
       {showComponent("Tripod") && <Tripod />}
       {showComponent("World") && <World />}
       {showComponent("Wouter (router)") && <Wouter />}
-      <Router base={process.env.PUBLIC_URL} hook={useHashLocation}>
-        <Route component={WouterPathRouter} path="/router" />
-        <Route component={WouterPathWouter} path="/wouter" />
-      </Router>
-    </>
+      <Route component={WouterPathRouter} path="/router" />
+      <Route component={WouterPathWouter} path="/wouter" />
+    </Router>
   );
 };

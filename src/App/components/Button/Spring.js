@@ -14,8 +14,6 @@ export default (props) => {
     rotation: toggle ? [THREE.MathUtils.degToRad(-90), 0, 0] : [0, 0, 0],
   });
 
-  useFrame(() => {});
-
   return (
     <animated.group
       {...props}
