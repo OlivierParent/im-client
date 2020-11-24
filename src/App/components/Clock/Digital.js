@@ -19,8 +19,9 @@ export default (props) => {
     const HH = new ZeroFill(d.getHours(), 2);
     const MM = new ZeroFill(d.getMinutes(), 2);
     const SS = new ZeroFill(d.getSeconds(), 2);
-
-    clockRef.current.text = `${HH}:${MM}:${SS}`;
+    if (clockRef.current) {
+      clockRef.current.text = `${HH}:${MM}:${SS}`;
+    }
   });
 
   return <Text fontSize={2} ref={clockRef} {...props} />;

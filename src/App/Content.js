@@ -31,6 +31,7 @@ import {
   SuzanneNormalTexture,
   SuzanneStandardMaterial,
   SuzanneToonMaterial,
+  Svg,
   Tripod,
   World,
   Wouter,
@@ -79,6 +80,7 @@ export default () => {
     "Suzanne (Normal Texture)",
     "Suzanne (Standard Material)",
     "Suzanne (Toon Material)",
+    "SVG",
     "Tripod",
     "World",
     "Wouter (router)",
@@ -99,6 +101,7 @@ export default () => {
     type: "boolean",
     value: false,
   });
+
   const showEffect = useControl("Effect", {
     group: "General",
     type: "boolean",
@@ -112,7 +115,7 @@ export default () => {
   const useComponent = useControl("Component", {
     group: "General",
     type: "select",
-    value: "Suzanne (default)",
+    value: "SVG",
     items: components,
   });
   const useLighting = useControl("Lighting", {
@@ -204,6 +207,7 @@ export default () => {
             <SuzanneStandardMaterial />
           )}
           {showComponent("Suzanne (Toon Material)") && <SuzanneToonMaterial />}
+          {showComponent("SVG") && <Svg />}
         </Suspense>
       )}
       {showComponent("Tripod") && <Tripod />}

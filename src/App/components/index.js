@@ -25,6 +25,7 @@ export { default as SuzanneMatcapTexture } from "./Suzanne/MatcapTexture";
 export { default as SuzanneNormalTexture } from "./Suzanne/NormalTexture";
 export { default as SuzanneStandardMaterial } from "./Suzanne/StandardMaterial";
 export { default as SuzanneToonMaterial } from "./Suzanne/ToonMaterial";
+export { default as Svg } from "./Svg";
 export { default as Tripod } from "./Tripod";
 export { default as World } from "./World";
 export { default as Wouter } from "./Wouter";

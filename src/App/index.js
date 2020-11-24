@@ -8,7 +8,7 @@ import "./styles.css";
 export default () => {
   return (
     <ControlsProvider>
-      <Canvas invalidateFrameloop={false} shadowMap>
+      <Canvas invalidateFrameloop={false} shadowMap colorManagement={false}>
         <Content />
       </Canvas>
       <Controls title="Controls" />
