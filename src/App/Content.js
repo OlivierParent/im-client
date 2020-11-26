@@ -13,6 +13,7 @@ import {
   Face,
   Gauge,
   Image,
+  ImageSvg,
   Lighting,
   LightingGui,
   LightingStudio,
@@ -31,7 +32,6 @@ import {
   SuzanneNormalTexture,
   SuzanneStandardMaterial,
   SuzanneToonMaterial,
-  Svg,
   Tripod,
   World,
   Wouter,
@@ -45,7 +45,6 @@ const useHashLocation = () => {
   const [location, setLocation] = useState(currentLocation());
 
   useEffect(() => {
-    console.log(window.location.hash);
     const handler = () => setLocation(currentLocation());
     window.addEventListener("hashchange", handler);
     return () => window.removeEventListener("hashchange", handler);
@@ -68,6 +67,7 @@ export default () => {
     "Face",
     "Gauge",
     "Image",
+    "Image (SVG)",
     "Logo",
     "Logo (double)",
     "Lorem Ipsum",
@@ -80,7 +80,6 @@ export default () => {
     "Suzanne (Normal Texture)",
     "Suzanne (Standard Material)",
     "Suzanne (Toon Material)",
-    "SVG",
     "Tripod",
     "World",
     "Wouter (router)",
@@ -115,7 +114,7 @@ export default () => {
   const useComponent = useControl("Component", {
     group: "General",
     type: "select",
-    value: "SVG",
+    value: "Suzanne (default)",
     items: components,
   });
   const useLighting = useControl("Lighting", {
@@ -194,6 +193,7 @@ export default () => {
           {showComponent("Lorem Ipsum") && <LoremIpsum />}
           {showComponent("Normals") && <Normals />}
           {showComponent("Image") && <Image />}
+          {showComponent("Image (SVG)") && <ImageSvg />}
           {showComponent("Spring") && <Spring />}
           {showComponent("Spring (Props)") && <SpringProps />}
           {showComponent("Suzanne (default)") && <Suzanne />}
@@ -207,7 +207,6 @@ export default () => {
             <SuzanneStandardMaterial />
           )}
           {showComponent("Suzanne (Toon Material)") && <SuzanneToonMaterial />}
-          {showComponent("SVG") && <Svg />}
         </Suspense>
       )}
       {showComponent("Tripod") && <Tripod />}
