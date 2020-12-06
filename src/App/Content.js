@@ -33,6 +33,7 @@ import {
   SuzanneStandardMaterial,
   SuzanneToonMaterial,
   Texture,
+  TextureBakedNormals,
   Tripod,
   World,
   Wouter,
@@ -82,6 +83,7 @@ export default () => {
     "Suzanne (Standard Material)",
     "Suzanne (Toon Material)",
     "Texture",
+    "Texture (Baked Normals)",
     "Tripod",
     "World",
     "Wouter (router)",
@@ -210,6 +212,7 @@ export default () => {
           )}
           {showComponent("Suzanne (Toon Material)") && <SuzanneToonMaterial />}
           {showComponent("Texture") && <Texture />}
+          {showComponent("Texture (Baked Normals)") && <TextureBakedNormals />}
         </Suspense>
       )}
       {showComponent("Tripod") && <Tripod />}
