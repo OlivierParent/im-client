@@ -22,8 +22,8 @@
     "react-spring": "^8.0.27",
     "react-three-fiber": "^5.3.7",
     "react-three-gui": "0.3.1",
-    "socket.io-client": "^3.0.3",
-    "three": "^0.123.0",
+    "socket.io-client": "^3.0.4",
+    "three": "0.122.0",
     "wouter": "^2.6.0"
   },
   "browserslist": {

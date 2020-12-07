@@ -1,12 +1,10 @@
 import React from "react";
-import { useGLTF, useNormalTexture, useSubdivision } from "@react-three/drei";
+import { useGLTF, useNormalTexture } from "@react-three/drei";
 
 import suzanneGlb from "./suzanne.glb";
 
 export default () => {
   const { nodes } = useGLTF(suzanneGlb, true);
-  const suzanneRef = useSubdivision(2);
-
   const [normalMap] = useNormalTexture(
     8, // Index or file name, see: https://github.com/emmelleppi/normal-maps/
 
@@ -19,7 +17,7 @@ export default () => {
   );
 
   return (
-    <mesh geometry={nodes.Suzanne.geometry} ref={suzanneRef}>
+    <mesh geometry={nodes.Suzanne.geometry}>
       <meshStandardMaterial normalMap={normalMap} />
     </mesh>
   );
