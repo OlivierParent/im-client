@@ -32,6 +32,7 @@ export { default as Texture } from "./Texture";
 export { default as TextureBakedNormals } from "./Texture/BakedNormals";
 export { default as Tripod } from "./Tripod";
 export { default as World } from "./World";
+export { default as WorldSound } from "./World/Sound";
 export { default as Wouter } from "./Wouter";
 export { default as WouterPathRouter } from "./Wouter/PathRouter";
 export { default as WouterPathWouter } from "./Wouter/PathWouter";

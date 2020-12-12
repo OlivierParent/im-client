@@ -37,6 +37,7 @@ import {
   TextureBakedNormals,
   Tripod,
   World,
+  WorldSound,
   Wouter,
   WouterPathRouter,
   WouterPathWouter,
@@ -88,6 +89,7 @@ export default () => {
     "Texture (Baked Normals)",
     "Tripod",
     "World",
+    "World (Sound)",
     "Wouter (router)",
   ];
 
@@ -216,6 +218,7 @@ export default () => {
           {showComponent("Suzanne (Toon Material)") && <SuzanneToonMaterial />}
           {showComponent("Texture") && <Texture />}
           {showComponent("Texture (Baked Normals)") && <TextureBakedNormals />}
+          {showComponent("World (Sound)") && <WorldSound />}
         </Suspense>
       )}
       {showComponent("Tripod") && <Tripod />}
