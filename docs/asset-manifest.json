@@ -5,11 +5,11 @@
     "main.js.map": "/x-reality/static/js/main.894b2482.chunk.js.map",
     "runtime-main.js": "/x-reality/static/js/runtime-main.bb170c67.js",
     "runtime-main.js.map": "/x-reality/static/js/runtime-main.bb170c67.js.map",
-    "static/js/2.271231e7.chunk.js": "/x-reality/static/js/2.271231e7.chunk.js",
-    "static/js/2.271231e7.chunk.js.map": "/x-reality/static/js/2.271231e7.chunk.js.map",
+    "static/js/2.d21661e3.chunk.js": "/x-reality/static/js/2.d21661e3.chunk.js",
+    "static/js/2.d21661e3.chunk.js.map": "/x-reality/static/js/2.d21661e3.chunk.js.map",
     "index.html": "/x-reality/index.html",
     "static/css/main.c24f9013.chunk.css.map": "/x-reality/static/css/main.c24f9013.chunk.css.map",
-    "static/js/2.271231e7.chunk.js.LICENSE.txt": "/x-reality/static/js/2.271231e7.chunk.js.LICENSE.txt",
+    "static/js/2.d21661e3.chunk.js.LICENSE.txt": "/x-reality/static/js/2.d21661e3.chunk.js.LICENSE.txt",
     "static/media/BakedNormals.03580610.glb": "/x-reality/static/media/BakedNormals.03580610.glb",
     "static/media/SVG_logo.e87754b4.svg": "/x-reality/static/media/SVG_logo.e87754b4.svg",
     "static/media/TexturedCube.2b78eebc.glb": "/x-reality/static/media/TexturedCube.2b78eebc.glb",
@@ -24,7 +24,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.bb170c67.js",
-    "static/js/2.271231e7.chunk.js",
+    "static/js/2.d21661e3.chunk.js",
     "static/css/main.c24f9013.chunk.css",
     "static/js/main.894b2482.chunk.js"
   ]

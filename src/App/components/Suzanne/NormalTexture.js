@@ -7,7 +7,6 @@ export default () => {
   const { nodes } = useGLTF(suzanneGlb, true);
   const [normalMap] = useNormalTexture(
     8, // Index or file name, see: https://github.com/emmelleppi/normal-maps/
-
     //0 index of the normal texture - https://github.com/emmelleppi/normal-maps/blob/master/normals.json
     {
       anisotropy: 8,
