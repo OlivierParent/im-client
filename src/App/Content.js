@@ -31,7 +31,7 @@ import {
   SuzanneMatcapTexture,
   SuzanneNormalTexture,
   SuzanneStandardMaterial,
-  SuzanneSubdivisions,
+  // SuzanneSubdivisions,
   SuzanneToonMaterial,
   Texture,
   TextureBakedNormals,
@@ -83,7 +83,7 @@ export default () => {
     "Suzanne (MatCap Texture)",
     "Suzanne (Normal Texture)",
     "Suzanne (Standard Material)",
-    "Suzanne (Subdivisions)",
+    // "Suzanne (Subdivisions)",
     "Suzanne (Toon Material)",
     "Texture",
     "Texture (Baked Normals)",
@@ -214,7 +214,7 @@ export default () => {
           {showComponent("Suzanne (Standard Material)") && (
             <SuzanneStandardMaterial />
           )}
-          {showComponent("Suzanne (Subdivisions)") && <SuzanneSubdivisions />}
+          {/* {showComponent("Suzanne (Subdivisions)") && <SuzanneSubdivisions />} */}
           {showComponent("Suzanne (Toon Material)") && <SuzanneToonMaterial />}
           {showComponent("Texture") && <Texture />}
           {showComponent("Texture (Baked Normals)") && <TextureBakedNormals />}

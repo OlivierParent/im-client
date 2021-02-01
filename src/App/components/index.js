@@ -25,7 +25,7 @@ export { default as Suzanne } from "./Suzanne";
 export { default as SuzanneMatcapTexture } from "./Suzanne/MatcapTexture";
 export { default as SuzanneNormalTexture } from "./Suzanne/NormalTexture";
 export { default as SuzanneStandardMaterial } from "./Suzanne/StandardMaterial";
-export { default as SuzanneSubdivisions } from "./Suzanne/Subdivisions";
+// export { default as SuzanneSubdivisions } from "./Suzanne/Subdivisions";
 export { default as SuzanneToonMaterial } from "./Suzanne/ToonMaterial";
 export { default as SvgLoader } from "./SvgLoader";
 export { default as Texture } from "./Texture";

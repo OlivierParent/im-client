@@ -12,19 +12,19 @@
   "license": "ISC",
   "dependencies": {
     "@react-three/cannon": "^0.5.3",
-    "@react-three/drei": "^2.2.13",
+    "@react-three/drei": "^3.2.1",
     "@react-three/flex": "^0.5.2",
-    "@react-three/postprocessing": "^1.5.0",
+    "@react-three/postprocessing": "^1.5.1",
     "d3-ease": "^2.0.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "^4.0.1",
     "react-spring": "^8.0.27",
-    "react-three-fiber": "^5.3.10",
+    "react-three-fiber": "^5.3.18",
     "react-three-gui": "0.3.1",
-    "socket.io-client": "^3.0.4",
-    "three": "^0.124.0",
-    "wouter": "^2.7.0"
+    "socket.io-client": "^3.1.0",
+    "three": "^0.125.2",
+    "wouter": "^2.7.2"
   },
   "browserslist": {
     "production": [
